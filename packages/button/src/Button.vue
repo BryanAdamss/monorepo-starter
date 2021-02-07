@@ -1,11 +1,12 @@
 <template>
-  <button class="c-Button">我是按钮</button>
+  <button class="c-Button" @click="handleClick">我是按钮</button>
 </template>
 
 <script>
 /**
  * * Button
  */
+import { getMsg } from '@ba/button'
 
 export default {
   name: 'Button',
@@ -20,7 +21,11 @@ export default {
   beforeCreate() {},
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    handleClick() {
+      alert(getMsg('Button'))
+    },
+  },
 }
 </script>
 
