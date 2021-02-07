@@ -5,7 +5,8 @@
   "author": "bryanadamss <bryanadamss@foxmail.com>",
   "homepage": "https://github.com/BryanAdamss/monorepo-starter#readme",
   "license": "MIT",
-  "main": "src/button.vue",
+  "main": "dist/index.umd.min.js",
+  "module": "src/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
