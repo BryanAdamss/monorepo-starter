@@ -29,5 +29,8 @@
   },
   "dependencies": {
     "@ba/utils": "^1.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.12"
   }
 }
