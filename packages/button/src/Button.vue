@@ -1,11 +1,18 @@
 <template>
-  <button class="c-Button" @click="handleClick">我是按钮</button>
+  <button
+    class="c-Button"
+    @click="handleClick"
+  >
+    我是按钮
+  </button>
 </template>
 
 <script>
 /**
  * * Button
  */
+import './button.css'
+
 import { getMsg } from '@ba/button'
 
 export default {
@@ -24,8 +31,8 @@ export default {
   methods: {
     handleClick() {
       alert(getMsg('Button'))
-    },
-  },
+    }
+  }
 }
 </script>
 
