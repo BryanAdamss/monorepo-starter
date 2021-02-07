@@ -26,5 +26,8 @@
   },
   "bugs": {
     "url": "https://github.com/BryanAdamss/monorepo-starter/issues"
+  },
+  "dependencies": {
+    "@ba/utils": "^1.0.0"
   }
 }
