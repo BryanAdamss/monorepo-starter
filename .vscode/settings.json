@@ -19,6 +19,9 @@
   // 自vscode更新到1.51.0版本后，默认格式化器为null，需要手动指定
   // 设置默认格式化器为pretter
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[vue]": {
+    "editor.defaultFormatter": null
+  },
   // prettier插件配置
   // 读取配置的优先级如下
   // .prettierrc文件 > .editorconfig > prettier插件选项
@@ -38,7 +41,8 @@
   // * 并且vue/recommended更合理，希望使用vue/recommended规则时
   // * 则可以使用eslint格式化vue
   // * 针对vue单独启动eslint autoFix（需关闭prettier）如下
-  "prettier.disableLanguages": ["vue", "javascript"],
+  // "prettier.disableLanguages": ["vue", "javascript"],
+  // prettier.disableLanguages不支持了，改用.prettierignore或editor.defaultFormatter
   // "[vue]": {
   //   "editor.codeActionsOnSave": {
   //     "source.fixAll.eslint": true
