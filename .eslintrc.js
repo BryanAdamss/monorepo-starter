@@ -11,6 +11,7 @@ module.exports = {
   },
   plugins: ['simple-import-sort'], // 添加import排序插件
   rules: {
+    'comma-dangle': ['error', 'never'], // 不需要尾随逗号
     // 在类成员之间出现空行
     'lines-between-class-members': 'warn',
     // 强制驼峰
