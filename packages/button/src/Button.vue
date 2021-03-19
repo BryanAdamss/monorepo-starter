@@ -11,7 +11,6 @@
 /**
  * * Button
  */
-import './button.css'
 
 import { getMsg } from '@ba/button'
 
@@ -36,4 +35,4 @@ export default {
 }
 </script>
 
-<style src="button.css"></style>
+<style src="./button.css"></style>
