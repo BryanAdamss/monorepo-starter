@@ -1995,6 +1995,14 @@
     "@octokit/openapi-types" "^4.0.0"
     "@types/node" ">= 8"
 
+"@rollup/pluginutils@4":
+  version "4.1.0"
+  resolved "https://registry.npm.taobao.org/@rollup/pluginutils/download/@rollup/pluginutils-4.1.0.tgz#0dcc61c780e39257554feb7f77207dceca13c838"
+  integrity sha1-Dcxhx4DjkldVT+t/dyB9zsoTyDg=
+  dependencies:
+    estree-walker "^2.0.1"
+    picomatch "^2.2.2"
+
 "@types/babel-types@*", "@types/babel-types@^7.0.0":
   version "7.0.9"
   resolved "https://registry.npm.taobao.org/@types/babel-types/download/@types/babel-types-7.0.9.tgz?cache=0&sync_timestamp=1613378062022&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fbabel-types%2Fdownload%2F%40types%2Fbabel-types-7.0.9.tgz#01d7b86949f455402a94c788883fe4ba574cad41"
@@ -4203,6 +4211,11 @@ estree-walker@^0.6.1:
   version "0.6.1"
   resolved "https://registry.npm.taobao.org/estree-walker/download/estree-walker-0.6.1.tgz#53049143f40c6eb918b23671d1fe3219f3a1b362"
   integrity sha1-UwSRQ/QMbrkYsjZx0f4yGfOhs2I=
+
+estree-walker@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.npm.taobao.org/estree-walker/download/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
+  integrity sha1-UvAQF4wqTBF6d1fP6UKtt9LaTKw=
 
 esutils@^2.0.2:
   version "2.0.3"
@@ -7155,7 +7168,7 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
+picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1, picomatch@^2.2.2:
   version "2.2.2"
   resolved "https://registry.npm.taobao.org/picomatch/download/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
   integrity sha1-IfMz6ba46v8CRo9RRupAbTRfTa0=
@@ -8055,6 +8068,13 @@ rollup-plugin-commonjs@^10.1.0:
     magic-string "^0.25.2"
     resolve "^1.11.0"
     rollup-pluginutils "^2.8.1"
+
+rollup-plugin-css-only@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npm.taobao.org/rollup-plugin-css-only/download/rollup-plugin-css-only-3.1.0.tgz#6a701cc5b051c6b3f0961e69b108a9a118e1b1df"
+  integrity sha1-anAcxbBRxrPwlh5psQipoRjhsd8=
+  dependencies:
+    "@rollup/pluginutils" "4"
 
 rollup-plugin-node-resolve@^5.2.0:
   version "5.2.0"
