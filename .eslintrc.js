@@ -1,13 +1,13 @@
 module.exports = {
   root: true,
   env: {
-    node: true,
+    node: true
   },
   // 2020-0623-改用更严格的vue eslit检查规则
   extends: ['plugin:vue/recommended', '@vue/standard'],
   // extends: ["plugin:vue/essential", "eslint:recommended", "@vue/prettier"],
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: 'babel-eslint'
   },
   plugins: ['simple-import-sort'], // 添加import排序插件
   rules: {
@@ -19,7 +19,7 @@ module.exports = {
     // 关闭attribute强制横线连接
     'vue/attribute-hyphenation': 'off',
     // 单行内容的html标签，将内容置于一行中
-    'vue/singleline-html-element-content-newline': 'warn',
+    // 'vue/singleline-html-element-content-newline': 'warn',
     // style、template、script块间留有空格
     'vue/padding-line-between-blocks': 'warn',
     // 允许使用v-html
@@ -38,8 +38,8 @@ module.exports = {
       'error',
       {
         extensions: ['js', 'jsx', '.ts', '.tsx', 'vue'], // 检测的拓展名
-        shouldMatchCase: true, // 需要匹配大小写
-      },
+        shouldMatchCase: true // 需要匹配大小写
+      }
     ],
     // 禁止空template、script、style
     'vue/no-empty-component-block': 'warn',
@@ -52,8 +52,8 @@ module.exports = {
       'error',
       {
         version: '^2.6.11',
-        ignores: [],
-      },
+        ignores: []
+      }
     ],
     // 禁止不必要的插值表达式，如{{ 3 }}，可直接用3代替
     'vue/no-useless-mustaches': 'warn',
@@ -62,7 +62,8 @@ module.exports = {
     // 组件必须命名
     'vue/require-name-property': 'warn',
 
-    'vue/singleline-html-element-content-newline': 'off', // 关闭单html标签，内容需换行，因为其和prettier冲突
+    // 关闭单html标签，内容需换行，因为其和prettier冲突
+    'vue/singleline-html-element-content-newline': 'off',
 
     // 设置缩进
     // indent: ['error', 2, { SwitchCase: 1 }],
@@ -83,6 +84,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     // eslint-plugin-simple-import-sort
     // 使用其自定义排序 https://github.com/lydell/eslint-plugin-simple-import-sort/#custom-grouping
+    // eslint-plugin-simple-import-sort v6.0版本后，此规则调整为simple-import-sort/imports
     'simple-import-sort/imports': [
       'error',
       {
@@ -114,24 +116,23 @@ module.exports = {
           ['^[^.]'],
           // Relative imports.
           // Anything that starts with a dot.
-          ['^\\.'],
-        ],
-      },
+          ['^\\.']
+        ]
+      }
     ],
     'sort-imports': 'off', // 关闭可能影响simple-import-sort效果的自带排序规则
-    'import/order': 'off', // 关闭可能影响simple-import-sort效果的自带排序规则
-    'simple-import-sort/exports': 'error',
+    'import/order': 'off' // 关闭可能影响simple-import-sort效果的自带排序规则
   },
   overrides: [
     {
       files: [
         '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)'
       ],
       env: {
-        jest: true,
-      },
-    },
+        jest: true
+      }
+    }
   ],
   globals: {
     // 指定全局变量并不允许改写，eslint不会报错
@@ -141,6 +142,6 @@ module.exports = {
     FastClick: false,
     pdfjsLib: false,
     pdfjsViewer: false,
-    Hammer: false,
-  },
+    Hammer: false
+  }
 }
