@@ -1,6 +1,7 @@
-# /build/
+/build/
 /config/
 dist
-# /*.js
+/*.js
+!/.eslintrc.js
 /test/unit/coverage/
 /static/
