@@ -1,35 +1,61 @@
 <template>
   <button
-    class="c-Button"
-    @click="handleClick"
+    type="button"
+    :class="classes"
+    :style="style"
+    @click="onClick"
   >
-    我是按钮
+    {{ label }}
   </button>
 </template>
 
 <script>
-/**
- * * Button
- */
-
-import { getMsg } from '@ba/button'
+import './button.css'
 
 export default {
   name: 'Button',
-  components: {},
-  mixins: [],
-  props: {},
-  data() {
-    return {}
+
+  props: {
+    label: {
+      type: String,
+      required: true
+    },
+    primary: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: 'medium',
+      validator: function (value) {
+        return ['small', 'medium', 'large'].indexOf(value) !== -1
+      }
+    },
+    backgroundColor: {
+      type: String,
+      default: '#05c1ae'
+    }
   },
-  computed: {},
-  watch: {},
-  beforeCreate() {},
-  created() {},
-  mounted() {},
+
+  computed: {
+    classes() {
+      return {
+        'c-Button': true,
+        'c-Button--primary': this.primary,
+        'c-Button--secondary': !this.primary,
+        [`c-Button--${this.size}`]: true
+      }
+    },
+    style() {
+      return {
+        backgroundColor: this.backgroundColor
+      }
+    }
+  },
+
   methods: {
-    handleClick() {
-      alert(getMsg('Button'))
+    onClick() {
+      this.$emit('onClick')
     }
   }
 }
