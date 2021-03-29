@@ -1,6 +1,8 @@
 {
   "name": "root",
   "private": true,
+  "description": "A common building block repository",
+  "author": "GuangHui <bryanadamss@foxmail.com>",
   "workspaces": [
     "packages/*"
   ],
@@ -65,6 +67,7 @@
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12"
   },
+  "dependencies": {},
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
@@ -92,6 +95,5 @@
     "*": [
       "ls-lint"
     ]
-  },
-  "dependencies": {}
+  }
 }
