@@ -24,7 +24,6 @@
     "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
-    "@storybook/addon-storyshots": "^6.1.21",
     "@storybook/vue": "^6.1.21",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-standard": "^6.0.0",
