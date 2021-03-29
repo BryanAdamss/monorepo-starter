@@ -19,7 +19,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { MyButton },
-  template: '<my-button @clicked="clicked" v-bind="$props" />'
+  template: '<my-button @onClick="onClick" v-bind="$props" />'
 })
 
 export const Primary = Template.bind({}) // 使用bind({})，克隆一个新函数，创建一个新story

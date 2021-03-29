@@ -9,5 +9,5 @@ import '@storybook/addon-console'
 
 export const parameters = {
   // 设置全局的actions模式，可自动生成action，方便模拟事件处理函数(不用手动编写事件处理函数)
-  actions: { argTypesRegex: '^[a-zA-Z]+(-[a-zA-Z0-9]+)?' }
+  actions: { argTypesRegex: '^on[A-Z].*' }
 }

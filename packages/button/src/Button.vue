@@ -54,7 +54,7 @@ export default {
 
   methods: {
     handleClick() {
-      this.$emit('clicked', new Date().getTime())
+      this.$emit('onClick', new Date().getTime())
       console.log('测试@storybook/addon-console')
     }
   }
