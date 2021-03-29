@@ -3,7 +3,7 @@
     type="button"
     :class="classes"
     :style="style"
-    @click="onClick"
+    @click="handleClick"
   >
     {{ label }}
   </button>
@@ -53,8 +53,9 @@ export default {
   },
 
   methods: {
-    onClick() {
-      this.$emit('onClick')
+    handleClick() {
+      this.$emit('clicked', new Date().getTime())
+      console.log('测试@storybook/addon-console')
     }
   }
 }

@@ -2774,6 +2774,13 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
+"@storybook/addon-console@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.npm.taobao.org/@storybook/addon-console/download/@storybook/addon-console-1.2.3.tgz#f6c88a8f54fe00c8de9b77720eaef2bc1daa3af1"
+  integrity sha1-9siKj1T+AMjem3dyDq7yvB2qOvE=
+  dependencies:
+    global "^4.3.2"
+
 "@storybook/addon-controls@6.1.21":
   version "6.1.21"
   resolved "https://registry.npm.taobao.org/@storybook/addon-controls/download/@storybook/addon-controls-6.1.21.tgz#14e3473cfa6dcdb88e57a74e1a42b57bd87c69ee"
