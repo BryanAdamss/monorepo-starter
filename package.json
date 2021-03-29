@@ -1,7 +1,7 @@
 {
   "name": "root",
   "private": true,
-  "description": "A common building block repository",
+  "description": "A monorepo starter for UI components. Use lerna,yarn workspaces, rollup, storybook etc.",
   "author": "GuangHui <bryanadamss@foxmail.com>",
   "workspaces": [
     "packages/*"
