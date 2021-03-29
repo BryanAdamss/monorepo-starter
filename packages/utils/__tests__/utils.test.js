@@ -1,7 +1,9 @@
-'use strict';
+'use strict'
 
-const utils = require('..');
+import { print } from '../src/index.js'
 
 describe('@ba/utils', () => {
-    it('needs tests');
-});
+  it('should be a function', () => {
+    expect(typeof print === 'function').toBe(true)
+  })
+})

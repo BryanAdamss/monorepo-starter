@@ -2,3 +2,4 @@ packages/**/*.vue
 packages/**/*.js
 stories/**/*.js
 build/**/*.js
+test/

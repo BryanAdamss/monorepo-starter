@@ -1,5 +1,5 @@
 // Import vue component
-import Button from './Button.vue'
+import GhButton from './GhButton.vue'
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {
@@ -7,7 +7,7 @@ export function install(Vue) {
 
   install.installed = true
   // eslint-disable-next-line vue/match-component-file-name
-  Vue.component('Button', Button)
+  Vue.component('GhButton', GhButton)
 }
 
 // Create module definition for Vue.use()
@@ -26,4 +26,4 @@ if (typeof window !== 'undefined') {
 if (GlobalVue) GlobalVue.use(plugin)
 
 // To allow use as module (npm/webpack/etc.) export component
-export default Button
+export default GhButton

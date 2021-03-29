@@ -3,11 +3,11 @@
  * @description button storybook
  */
 
-import MyButton from '../packages/button/src/Button.vue'
+import GhButton from '../packages/button/src/GhButton.vue'
 
 export default {
-  title: 'Example/Button', // 设置storybook标题
-  component: MyButton, // 使用的组件
+  title: 'Example/GhButton', // 设置storybook标题
+  component: GhButton, // 使用的组件
   // 配置入参行为(props, slots, inputs, etc等等在storybook中统称为args)
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -18,8 +18,8 @@ export default {
 // 创建容器组件
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
-  components: { MyButton },
-  template: '<my-button @onClick="onClick" v-bind="$props" />'
+  components: { GhButton },
+  template: '<gh-button @onClick="onClick" v-bind="$props" />'
 })
 
 export const Primary = Template.bind({}) // 使用bind({})，克隆一个新函数，创建一个新story

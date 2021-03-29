@@ -12,7 +12,7 @@
 <script>
 
 export default {
-  name: 'Button',
+  name: 'GhButton',
 
   props: {
     label: {
@@ -39,10 +39,10 @@ export default {
   computed: {
     classes() {
       return {
-        'c-Button': true,
-        'c-Button--primary': this.primary,
-        'c-Button--secondary': !this.primary,
-        [`c-Button--${this.size}`]: true
+        'c-GhButton': true,
+        'c-GhButton--primary': this.primary,
+        'c-GhButton--secondary': !this.primary,
+        [`c-GhButton--${this.size}`]: true
       }
     },
     style() {
@@ -61,4 +61,4 @@ export default {
 }
 </script>
 
-<style src="./button.css"></style>
+<style src="./GhButton.css"></style>
