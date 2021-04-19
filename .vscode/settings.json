@@ -20,5 +20,9 @@
 
   "css.validate": false,
   "less.validate": false,
-  "scss.validate": false
+  "scss.validate": false,
+
+  "docthis.inferTypesFromNames": true,
+  "docthis.includeDateTag": true,
+  "docthis.dateTagFormat": "yyyy-mm-dd HH:MM:ss"
 }
