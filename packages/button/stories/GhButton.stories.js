@@ -3,7 +3,7 @@
  * @description button storybook
  */
 
-import GhButton from '../packages/button/src/GhButton.vue'
+import GhButton from '../src/GhButton.vue'
 
 export default {
   title: 'Example/GhButton', // 设置storybook标题

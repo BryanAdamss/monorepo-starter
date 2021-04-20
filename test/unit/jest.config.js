@@ -19,6 +19,7 @@ module.exports = {
   collectCoverageFrom: [
     'packages/**/src/*.{js,vue}',
     '!packages/**/src/index.js',
+    '!packages/**/*.stories.{js,jsx,ts,tsx,mdx}',
     '!**/node_modules/**'
   ],
   transformIgnorePatterns: ['node_modules']
