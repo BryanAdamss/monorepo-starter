@@ -6,7 +6,7 @@
   "source": {
     "include": ["packages"],
     "includePattern": ".js$",
-    "excludePattern": "(node_modules/|docs|__tests__|dist)"
+    "excludePattern": "(node_modules/|docs|__tests__|dist|stories)"
   },
   "plugins": ["plugins/markdown"],
   "templates": {
