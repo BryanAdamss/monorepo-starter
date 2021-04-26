@@ -10,9 +10,10 @@
     "bootstrap": "lerna bootstrap --use-workspaces",
     "build": "lerna run build --parallel",
     "commit": "git-cz",
+    "predev": "yarn doc:lib",
     "dev": "start-storybook -p 6006",
-    "doc:comp": "build-storybook -o ./docs/components",
-    "doc:lib": "lerna run doc --parallel",
+    "doc:comp": "build-storybook -o ./docs-static",
+    "doc:lib": "lerna run jsdoc2mdx --parallel",
     "doc": "yarn doc:lib && yarn doc:comp",
     "test": "jest --config test/unit/jest.config.js --coverage"
   },

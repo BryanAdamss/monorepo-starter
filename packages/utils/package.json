@@ -10,8 +10,8 @@
   "browser": "dist/index.umd.js",
   "scripts": {
     "build": "lerna exec --scope @ba/utils -- rollup -c ../../build/base.js",
-    "predoc": "rm -rf ./stories/*",
-    "doc": "lerna exec --scope @ba/utils -- node ../../build/jsdoc2mdx.js"
+    "prejsdoc2mdx": "rm -rf ./stories/*",
+    "jsdoc2mdx": "lerna exec --scope @ba/utils -- node ../../build/jsdoc2mdx.js"
   },
   "directories": {
     "lib": "lib",
