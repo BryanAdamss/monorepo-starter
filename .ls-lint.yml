@@ -19,3 +19,16 @@ ls:
     .woff: kebab-case
     .woff2: kebab-case
     .html: kebab-case
+  packages/**/dist:
+    .js: regex:.+
+  packages/**/stories:
+    .js: regex:.+
+  packages/**/__tests__:
+    .js: regex:.+
+
+ignore:
+  - node_modules
+  - .git
+  - .circleci
+  - .github
+  - .vscode
