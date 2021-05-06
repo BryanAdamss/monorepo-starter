@@ -5,9 +5,11 @@
   "author": "GuangHui <bryanadamss@foxmail.com>",
   "homepage": "https://github.com/BryanAdamss/monorepo-starter#readme",
   "license": "MIT",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
-  "browser": "dist/index.umd.js",
+  "main": "./dist/index.cjs.js",
+  "exports": "./dist/index.modern.js",
+  "module": "./dist/index.es.js",
+  "browser": "./dist/index.umd.js",
+  "unpkg": "./dist/index.umd.js",
   "scripts": {
     "build": "lerna exec --scope @ba/button -- rollup -c=../../build/vue.js"
   },

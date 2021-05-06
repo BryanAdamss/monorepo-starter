@@ -13,48 +13,64 @@ import { terser } from 'rollup-plugin-terser'
 import vue from 'rollup-plugin-vue'
 
 /**
- * 获取所有模块（包）名数组
- * @param {String} root 根路径
- * @returns 模块（包）名数组
- */
+  * 获取所有模块（包）名数组
+  * @param {String} root 根路径
+  * @returns 模块（包）名数组
+  */
 export const getAllModules = (root) =>
   getPackagesSync(root).map(pkg => pkg.name)
 
 /**
- * 数组转为kv等值的对象
- * @param {Array} array 数组
- * @returns 一个对象，key，value相同
- */
+  * 数组转为kv等值的对象
+  * @param {Array} array 数组
+  * @returns 一个对象，key，value相同
+  */
 export const mirror = (array) =>
   array.reduce((acc, val) => ({ ...acc, [val]: val }), {})
 
 /**
- * 获取格式数组
- * @param {Boolean} isBrowser 是否浏览器包
- * @returns 对应格式数组
- */
-export const getFormats = (isBrowser) =>
-  isBrowser ? ['es', 'umd'] : ['es', 'cjs']
+  * 获取格式数组
+  * @param {Boolean} isBrowser 是否浏览器包
+  * @returns 对应格式数组
+  */
+export const getFormats = isBrowser =>
+  isBrowser ? ['es', 'umd', 'cjs', 'modern'] : ['es', 'cjs', 'modern']
 
 /**
- * 获取babel options
- * @returns babel options
- */
-export const getBabelOptions = () => ({
+  * 是否modern包
+  * @param {String} format 格式
+  * @returns {Boolean} 是否modern包
+  */
+export const isModern = format => format === 'modern'
+
+/**
+  * 获取babel options
+  * @returns babel options
+  */
+export const getBabelOptions = isModern => ({
   exclude: ['node_modules/**'],
-  presets: [['@babel/preset-env', { modules: false }]]
+  presets: [[
+    '@babel/preset-env', isModern
+      ? {
+          modules: false,
+          targets: { esmodules: true },
+          bugfixes: true,
+          loose: true
+        }
+      : { modules: false }
+  ]]
 })
 
 /**
- * 生成版权banner
- * @returns 版权banner
- */
+  * 生成版权banner
+  * @returns 版权banner
+  */
 export const getBanner = () => 'banner\n<%= pkg.name %>\nv<%= pkg.version %>\nby <%= pkg.author %>\nLicense:<%= pkg.license %>\n<%= pkg.homepage%>'
 
 /**
- * 获取terser options
- * @returns terser options
- */
+  * 获取terser options
+  * @returns terser options
+  */
 export const getTerserOptions = () => ({
   output: {
     comments(node, { value, type }) {
@@ -64,16 +80,16 @@ export const getTerserOptions = () => ({
 })
 
 /**
- * 生成基础rollup配置对象
- * @param {Object} obj 参数对象
- * @returns 一个rollup配置对象
- */
+  * 生成基础rollup配置对象
+  * @param {Object} obj 参数对象
+  * @returns 一个rollup配置对象
+  */
 export const genConfig = ({ format, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES }) => ({
   input: INPUT_FILE,
 
   output: {
     file: path.join(OUTPUT_DIR, `index.${format}.js`),
-    format,
+    format: isModern(format) ? 'es' : format, // modern包以es格式输出
     sourcemap: false,
     name: LERNA_PACKAGE_NAME,
     globals: mirror(ALL_MODULES),
@@ -87,23 +103,23 @@ export const genConfig = ({ format, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, 
   plugins: [
     nodeResolve(),
     commonjs(),
-    babel(getBabelOptions()),
+    babel(getBabelOptions(isModern(format))),
     banner(getBanner()),
     terser(getTerserOptions())
   ]
 })
 
 /**
- * 生成vue rollup配置对象
- * @param {Object} obj 参数对象
- * @returns 一个rollup配置对象
- */
+  * 生成vue rollup配置对象
+  * @param {Object} obj 参数对象
+  * @returns 一个rollup配置对象
+  */
 export const genVueConfig = ({ format, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES }) => ({
   input: INPUT_FILE,
 
   output: {
     file: path.join(OUTPUT_DIR, `index.${format}.js`),
-    format,
+    format: isModern(format) ? 'es' : format, // modern包以es格式输出
     sourcemap: false,
     name: LERNA_PACKAGE_NAME,
     globals: mirror(ALL_MODULES),
@@ -117,7 +133,7 @@ export const genVueConfig = ({ format, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAM
   plugins: [
     nodeResolve(),
     commonjs(),
-    babel(getBabelOptions()),
+    babel(getBabelOptions(isModern(format))),
     vue({
       css: false, // 不内联css，提取css并使用rollup-plugin-css-only处理css；https://rollup-plugin-vue.vuejs.org/migrating.html
       compileTemplate: true // 使用把template编译为render函数
