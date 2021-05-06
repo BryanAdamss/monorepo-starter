@@ -10,15 +10,15 @@ const jsdoc2md = require('jsdoc-to-markdown')
 const { LERNA_PACKAGE_NAME } = process.env
 
 const PACKAGE_ROOT_PATH = process.cwd()
-const input =  path.join(PACKAGE_ROOT_PATH, 'src/*.js')
-const outputDir = path.join(PACKAGE_ROOT_PATH,'stories')
+const input = path.join(PACKAGE_ROOT_PATH, 'src/*.js')
+const outputDir = path.join(PACKAGE_ROOT_PATH, 'stories')
 const name = LERNA_PACKAGE_NAME.split('/')[1]
 
 // 清除缓存
 jsdoc2md.clear()
 
 // 创建outputdir
-if(!fs.existsSync(outputDir)) fs.mkdirSync(outputDir)
+if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir)
 
 const templateData = jsdoc2md.getTemplateDataSync({ files: input })
 

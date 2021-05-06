@@ -1,5 +1,5 @@
 /**
- * @author ghchu
+ * @author GuangHui
  * @description 构建工具函数
  */
 import { getPackagesSync } from '@lerna/project'
