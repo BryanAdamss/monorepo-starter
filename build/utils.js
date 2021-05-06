@@ -21,12 +21,27 @@ export const getAllModules = (root) =>
   getPackagesSync(root).map(pkg => pkg.name)
 
 /**
-  * 数组转为kv等值的对象
-  * @param {Array} array 数组
-  * @returns 一个对象，key，value相同
-  */
-export const mirror = (array) =>
-  array.reduce((acc, val) => ({ ...acc, [val]: val }), {})
+ * 转换为PascalCase格式
+ * @param {String} str 字符串
+ * @returns 转后后的字符串
+ * @example
+ * transform2PascalCase('@ba/utils')
+ * => BaUtils
+ */
+export const transform2PascalCase = str =>
+  str.replace(/@/g, '')
+    .split('/')
+    .filter(token => !!token)
+    .map(token => token.charAt(0).toUpperCase() + token.substring(1))
+    .join('')
+
+/**
+* 生成全局对象
+* @param {Array} array 数组
+* @returns 一个对象，key，value相同
+*/
+export const genGlobals = (array) =>
+  array.reduce((acc, val) => ({ ...acc, [val]: transform2PascalCase(val) }), {})
 
 /**
   * 获取格式数组
@@ -84,21 +99,22 @@ export const getTerserOptions = () => ({
   * @param {Object} obj 参数对象
   * @returns 一个rollup配置对象
   */
-export const genConfig = ({ format, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES }) => ({
+export const genConfig = ({ format, external, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES }) => ({
   input: INPUT_FILE,
 
   output: {
     file: path.join(OUTPUT_DIR, `index.${format}.js`),
     format: isModern(format) ? 'es' : format, // modern包以es格式输出
     sourcemap: false,
-    name: LERNA_PACKAGE_NAME,
-    globals: mirror(ALL_MODULES),
+    name: transform2PascalCase(LERNA_PACKAGE_NAME),
+    globals: genGlobals(ALL_MODULES),
     amd: {
       id: LERNA_PACKAGE_NAME
-    }
+    },
+    exports: 'named'
   },
 
-  external: ALL_MODULES,
+  external,
 
   plugins: [
     nodeResolve(),
@@ -114,21 +130,22 @@ export const genConfig = ({ format, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, 
   * @param {Object} obj 参数对象
   * @returns 一个rollup配置对象
   */
-export const genVueConfig = ({ format, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES }) => ({
+export const genVueConfig = ({ format, external, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES }) => ({
   input: INPUT_FILE,
 
   output: {
     file: path.join(OUTPUT_DIR, `index.${format}.js`),
     format: isModern(format) ? 'es' : format, // modern包以es格式输出
     sourcemap: false,
-    name: LERNA_PACKAGE_NAME,
-    globals: mirror(ALL_MODULES),
+    name: transform2PascalCase(LERNA_PACKAGE_NAME),
+    globals: genGlobals(ALL_MODULES),
     amd: {
       id: LERNA_PACKAGE_NAME
-    }
+    },
+    exports: 'named'
   },
 
-  external: ALL_MODULES,
+  external,
 
   plugins: [
     nodeResolve(),

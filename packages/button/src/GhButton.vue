@@ -11,6 +11,8 @@
 
 <script>
 
+import { print } from '@ba/utils'
+
 export default {
   name: 'GhButton',
 
@@ -54,6 +56,7 @@ export default {
 
   methods: {
     handleClick() {
+      print('GhButton')
       this.$emit('onClick', new Date().getTime())
       console.log('测试@storybook/addon-console')
     }

@@ -19,7 +19,12 @@ const ALL_MODULES = getAllModules(LERNA_ROOT_PATH)
 
 const formats = getFormats(IS_BROWSER_BUNDLE)
 
-const genParams = format => ({ format, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES })
+const external = [
+  ...Object.keys(PKG.dependencies || {}),
+  ...Object.keys(PKG.peerDependencies || {})
+]
+
+const genParams = format => ({ format, external, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES })
 
 export default formats
   .map(genParams)
