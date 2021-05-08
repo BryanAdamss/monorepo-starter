@@ -1,8 +1,8 @@
 # `@ba/button`
 
-> TODO: description
+> 按钮
 
-## Usage
+## Install
 
 ```
 const button = require('@ba/button');

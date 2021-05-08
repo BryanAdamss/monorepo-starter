@@ -14,7 +14,7 @@
 import { print } from '@ba/utils'
 
 export default {
-  name: 'GhButton',
+  name: 'BaButton',
 
   props: {
     label: {
@@ -41,10 +41,10 @@ export default {
   computed: {
     classes() {
       return {
-        'c-GhButton': true,
-        'c-GhButton--primary': this.primary,
-        'c-GhButton--secondary': !this.primary,
-        [`c-GhButton--${this.size}`]: true
+        'ba-Button': true,
+        'ba-Button--primary': this.primary,
+        'ba-Button--secondary': !this.primary,
+        [`ba-Button--${this.size}`]: true
       }
     },
     style() {
@@ -56,7 +56,7 @@ export default {
 
   methods: {
     handleClick() {
-      print('GhButton')
+      print('BaButton')
       this.$emit('onClick', new Date().getTime())
       console.log('测试@storybook/addon-console')
     }
@@ -64,4 +64,4 @@ export default {
 }
 </script>
 
-<style src="./GhButton.css"></style>
+<style lang="scss" src="./button.scss"></style>

@@ -2,7 +2,11 @@
   "name": "@ba/utils",
   "version": "1.0.0",
   "description": "tool methods",
-  "author": "GuangHui <bryanadamss@foxmail.com>",
+  "author": {
+    "name": "GuangHui",
+    "email": "bryanadamss@foxmail.com",
+    "url": "https://github.com/BryanAdamss"
+  },
   "homepage": "https://github.com/BryanAdamss/monorepo-starter#readme",
   "license": "MIT",
   "main": "./dist/index.cjs.js",

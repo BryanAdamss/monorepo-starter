@@ -1,0 +1,44 @@
+@import '../../../sass/_utils';
+
+.ba-Button {
+  display: inline-block;
+
+  font-weight: 700;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1;
+
+  border: 0;
+  border-radius: 3em;
+  cursor: pointer;
+
+  &--primary {
+    color: white;
+
+    background-color: #1ea7fd;
+  }
+
+  &--secondary {
+    color: #333;
+
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+  }
+
+  &--small {
+    padding: 10px 16px;
+
+    font-size: 12px;
+  }
+
+  &--medium {
+    padding: 11px 20px;
+
+    font-size: 14px;
+  }
+
+  &--large {
+    padding: 12px 24px;
+
+    font-size: 16px;
+  }
+}

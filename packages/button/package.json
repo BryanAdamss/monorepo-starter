@@ -2,7 +2,11 @@
   "name": "@ba/button",
   "version": "1.0.0",
   "description": "A vue button component",
-  "author": "GuangHui <bryanadamss@foxmail.com>",
+  "author": {
+    "name": "GuangHui",
+    "email": "bryanadamss@foxmail.com",
+    "url": "https://github.com/BryanAdamss"
+  },
   "homepage": "https://github.com/BryanAdamss/monorepo-starter#readme",
   "license": "MIT",
   "main": "./dist/index.cjs.js",
@@ -29,11 +33,5 @@
   },
   "bugs": {
     "url": "https://github.com/BryanAdamss/monorepo-starter/issues"
-  },
-  "dependencies": {
-    "@ba/utils": "^1.0.0"
-  },
-  "peerDependencies": {
-    "vue": "^2.6.12"
   }
 }

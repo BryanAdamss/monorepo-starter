@@ -1,11 +1,16 @@
+/**
+* @author GuangHui
+* @description button
+*/
+
 'use strict'
 
 import { shallowMount } from '@vue/test-utils'
 
-import GhButton from '../src/GhButton.vue'
+import Button from '../src/button.vue'
 
-describe('<GhButton/>', () => {
-  const wrapper = shallowMount(GhButton, {
+describe('<Button/>', () => {
+  const wrapper = shallowMount(Button, {
     propsData: {
       label: 'test'
     }
