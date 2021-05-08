@@ -35,7 +35,7 @@ module.exports = {
     'vue/html-comment-indent': 'warn',
     // component name要和文件名匹配
     'vue/match-component-file-name': [
-      'error',
+      'off',
       {
         extensions: ['js', 'jsx', '.ts', '.tsx', 'vue'], // 检测的拓展名
         shouldMatchCase: true // 需要匹配大小写

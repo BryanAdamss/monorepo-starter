@@ -2,7 +2,7 @@ ls:
   packages:
     .js: kebab-case | PascalCase
     .json: kebab-case
-    .vue: PascalCase
+    .vue: PascalCase | kebab-case
     .ts: kebab-case | PascalCase
     .d.ts: camelCase | kebab-case | PascalCase
     .spec.ts: kebab-case | PascalCase
