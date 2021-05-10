@@ -8,6 +8,9 @@
     "bootstrap": {
       "registry": "https://registry.npm.taobao.org/"
     },
+    "run": {
+      "npmClient": "yarn"
+    },
     "version": {
       "conventionalCommits": true,
       "message": "chore(release): publish",
