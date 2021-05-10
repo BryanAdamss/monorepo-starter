@@ -1,0 +1,63 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs/blocks'
+import BaButton from '../src/button.vue'
+
+<Meta
+  title="Components/BaButton"
+  component={BaButton}
+  argTypes={{
+    backgroundColor: { control: 'color' },
+    size: { control: { type: 'select', options: ['small', 'medium', 'large'] } }
+  }}
+/>
+
+<!-- 创建容器组件 -->
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { BaButton },
+  template: '<BaButton @onClick="onClick" v-bind="$props" />'
+})
+
+# BaButton
+
+A button component base on vue
+
+<Canvas>
+  <Story name="Primary" args={{ label: '按钮' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Primary"></ArgsTable>
+
+## Large
+
+可以通过设置`size`控制按钮大小；可选值有`['small', 'medium', 'large']`；默认`medium`
+
+<Canvas>
+  <Story
+    name="Large"
+    args={{
+      size: 'large',
+      label: '大小'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## BgColor
+
+可通过设置`backgroundColor`控制背景颜色；支持`hex、rgb、rgba、关键字`
+
+<Canvas>
+  <Story
+    name="BgColor"
+    args={{
+      backgroundColor: 'red',
+      label: '颜色'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

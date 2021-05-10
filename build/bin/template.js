@@ -177,6 +177,49 @@ Primary.args = {
 // label: 'Button'
 // }`
 
+const TPL_STORIES_MDX_VUE = `import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs/blocks'
+import {{prefix}}{{compName}} from '../src/{{fileName}}.vue'
+
+<!-- 设置 meta 信息 -->
+<Meta
+  title="Components/{{prefix}}{{compName}}"
+  component={{{prefix}}{{compName}}}
+  argTypes={{ TODO }}
+/>
+
+<!-- 创建容器组件 -->
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { {{prefix}}{{compName}} },
+  template: '<{{prefix}}{{compName}} v-bind="$props" />'
+})
+
+# {{prefix}}{{compName}}
+
+A {{fileName}} component base on vue
+
+<Canvas>
+  <Story name="Primary" args={{ TODO }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<!-- 主 story，建议设置 ArgsTable -->
+<ArgsTable story="Primary"></ArgsTable>
+
+## SubStory
+<!-- 子 story -->
+
+<Canvas>
+  <Story
+    name="SubStory"
+    args={{ TODO }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>`
+
 const TPL_TEST_LIB = `import { xxx } from '../src'
 
 describe('xxx', () => {
@@ -211,5 +254,6 @@ module.exports = {
   TPL_TEST,
   TPL_TEST_LIB,
   TPL_STORIES_VUE,
+  TPL_STORIES_MDX_VUE,
   TPL_INDEX_LIB
 }
