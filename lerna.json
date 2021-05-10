@@ -5,6 +5,9 @@
   "useWorkspaces": true,
   "ignoreChanges": ["**/__tests__/**", "**/*.md"],
   "command": {
+    "bootstrap": {
+      "registry": "https://registry.npm.taobao.org/"
+    },
     "version": {
       "conventionalCommits": true,
       "message": "chore(release): publish",
