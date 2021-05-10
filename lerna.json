@@ -16,6 +16,9 @@
       "message": "chore(release): publish",
       "allowBranch": ["main", "master"],
       "noCommitHooks": true
+    },
+    "publish": {
+      "registry": "https://registry.npmjs.org/"
     }
   }
 }
