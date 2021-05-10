@@ -6,6 +6,7 @@
 const fs = require('fs')
 const path = require('path')
 const jsdoc2md = require('jsdoc-to-markdown')
+const eol = require('os').EOL
 
 const { LERNA_PACKAGE_NAME } = process.env
 
@@ -22,17 +23,16 @@ if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir)
 
 const templateData = jsdoc2md.getTemplateDataSync({ files: input })
 
-const storyMdxMeta = `
-import { Meta } from '@storybook/addon-docs/blocks';
+const storyMdxMeta = `import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
   title="Libs/${name}"
   parameters={{ previewTabs: { canvas: { hidden: true } },docsOnly:true }}
 />
 `
-const output = jsdoc2md.renderSync({ data: templateData })
+const content = jsdoc2md.renderSync({ data: templateData })
 
 fs.writeFileSync(
   path.resolve(outputDir, `${name}.stories.mdx`),
-  `${storyMdxMeta}\r\n${output}`
+  `${storyMdxMeta}${eol}${content}`
 )
