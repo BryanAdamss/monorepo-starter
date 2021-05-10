@@ -87,14 +87,30 @@ const TPL_PKG = `{
 const TPL_README = `# \`@{{scope}}/{{fileName}}\`
  
  > {{chineseName}}
+
+ TODO:description
  
+ ## Prepare
+ - \`vue@^2.6.12\`
+
  ## Install
  
  \`\`\`
- const {{fileName}} = require('@{{scope}}/{{fileName}}');
- 
- // TODO: DEMONSTRATE API
+ npm i @{{scope}}/{{fileName}}
  \`\`\`
+ or
+ \`\`\`
+ yarn add @{{scope}}/{{fileName}}
+ \`\`\`
+
+ ## Usage
+ \`\`\`
+ import { TODO } from @{{scope}}/{{fileName}}
+ \`\`\`
+
+ ## Document
+ For more information see the [Document reference](TODO:document link).
+
  `
 
 const TPL_SCSS = `@import '../../../sass/_utils';
