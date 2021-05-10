@@ -131,7 +131,7 @@ describe('<{{prefix}}{{compName}}/>', () => {
   })
 })`
 
-const TPL_STORIES = `import {{prefix}}{{compName}} from '../src/{{fileName}}.vue'
+const TPL_STORIES_VUE = `import {{prefix}}{{compName}} from '../src/{{fileName}}.vue'
 
 export default {
   title: 'Components/{{prefix}}{{compName}}', // 设置storybook标题
@@ -194,6 +194,6 @@ module.exports = {
   TPL_SCSS,
   TPL_TEST,
   TPL_TEST_LIB,
-  TPL_STORIES,
+  TPL_STORIES_VUE,
   TPL_INDEX_LIB
 }

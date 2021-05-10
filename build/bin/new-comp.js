@@ -34,7 +34,7 @@ const {
   TPL_README,
   TPL_SCSS,
   TPL_TEST,
-  TPL_STORIES
+  TPL_STORIES_VUE
 } = require('./template')
 
 const packagePath = path.resolve(__dirname, '../../packages', fileName)
@@ -56,7 +56,7 @@ const tplMap = {
     name: './README.md'
   },
   stories: {
-    tpl: TPL_STORIES,
+    tpl: TPL_STORIES_VUE,
     params,
     name: `./stories/${fileName}.stories.js`
   },
