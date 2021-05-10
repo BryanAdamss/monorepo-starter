@@ -73,6 +73,7 @@ const TPL_PKG = `{
      "dist"
    ],
    "publishConfig": {
+     "access": "public",
      "registry": "https://registry.npmjs.org/"
    },
    "repository": {
