@@ -30,7 +30,7 @@ const params = {
 const {
   TPL_INDEX,
   TPL_VUE,
-  TPL_PKG,
+  TPL_PKG_VUE,
   TPL_README,
   TPL_SCSS,
   TPL_TEST,
@@ -61,7 +61,7 @@ const tplMap = {
     name: `./stories/${fileName}.stories.mdx`
   },
   package: {
-    tpl: TPL_PKG,
+    tpl: TPL_PKG_VUE,
     params,
     name: './package.json'
   },

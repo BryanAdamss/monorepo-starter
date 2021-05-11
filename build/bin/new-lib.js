@@ -28,7 +28,7 @@ const params = {
 }
 
 const {
-  TPL_PKG,
+  TPL_PKG_LIB,
   TPL_README,
   TPL_INDEX_LIB,
   TPL_TEST_LIB
@@ -53,7 +53,7 @@ const tplMap = {
     name: './README.md'
   },
   package: {
-    tpl: TPL_PKG,
+    tpl: TPL_PKG_LIB,
     params,
     name: './package.json'
   }
