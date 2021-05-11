@@ -58,7 +58,10 @@ const TPL_PKG_VUE = `{
    "homepage": "https://github.com/BryanAdamss/monorepo-starter#readme",
    "license": "MIT",
    "main": "./dist/index.cjs.js",
-   "exports": "./dist/index.modern.js",
+   "exports": {
+     "import":"./dist/index.modern.mjs",
+     "require":"./dist/index.cjs.js",
+   },
    "module": "./dist/index.es.js",
    "browser": "./dist/index.umd.js",
    "unpkg": "./dist/index.umd.js",
@@ -97,7 +100,10 @@ const TPL_PKG_LIB = `{
   "homepage": "https://github.com/BryanAdamss/monorepo-starter#readme",
   "license": "MIT",
   "main": "./dist/index.cjs.js",
-  "exports": "./dist/index.modern.js",
+  "exports": {
+    "import":"./dist/index.modern.mjs",
+    "require":"./dist/index.cjs.js",
+  },
   "module": "./dist/index.es.js",
   "browser": "./dist/index.umd.js",
   "unpkg": "./dist/index.umd.js",

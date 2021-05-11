@@ -3,6 +3,7 @@
  * @description 构建工具函数
  */
 import { getPackagesSync } from '@lerna/project'
+import { isEqual, uniqWith } from 'lodash'
 import path from 'path'
 import babel from 'rollup-plugin-babel'
 import banner from 'rollup-plugin-banner'
@@ -11,6 +12,61 @@ import css from 'rollup-plugin-css-only'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 import vue from 'rollup-plugin-vue'
+
+/**
+ * 出口字段
+ */
+export const PKG_FIELDS = ['main', 'exports', 'module', 'browser', 'unpkg']
+
+/**
+ * 生成formats数组
+ *
+ * @date 2021-05-11 18:36:55
+ * @export
+ * @param {Object} pkg package.json
+ * @return {Array}  format数组
+ */
+export function getFormats(pkg) {
+  const formats = PKG_FIELDS.reduce((acc, cur) => {
+    if (!pkg[cur]) return acc
+
+    const file = pkg[cur]
+
+    switch (cur) {
+      case 'main':
+        acc.push({ format: 'cjs', file })
+        break
+      case 'module':
+        acc.push({ format: 'es', file })
+        break
+      case 'exports':
+        if (typeof file === 'string' || (file && file.import)) {
+          const f = typeof file === 'string' ? file : file.import
+
+          acc.push({ format: 'es', file: f, isModern: true })
+
+          // 为支持直接导入module的浏览器生成.js后缀的modern包
+          if (/\.mjs$/.test(f)) acc.push({ format: 'es', file: f.replace(/\.m(js)$/, '.$1'), isModern: true })
+        }
+
+        if (file && file.require) acc.push({ format: 'cjs', file: file.require })
+
+        break
+      case 'unpkg':
+      case 'browser':
+        acc.push({ format: 'umd', file })
+        break
+      default:
+        acc.push({ format: 'cjs', file })
+        break
+    }
+
+    return acc
+  }, [])
+
+  // 去重
+  return uniqWith(formats, isEqual)
+}
 
 /**
   * 获取所有模块（包）名数组
@@ -44,21 +100,6 @@ export const genGlobals = (array) =>
   array.reduce((acc, val) => ({ ...acc, [val]: transform2PascalCase(val) }), {})
 
 /**
-  * 获取格式数组
-  * @param {Boolean} isBrowser 是否浏览器包
-  * @returns 对应格式数组
-  */
-export const getFormats = isBrowser =>
-  isBrowser ? ['es', 'umd', 'cjs', 'modern'] : ['es', 'cjs', 'modern']
-
-/**
-  * 是否modern包
-  * @param {String} format 格式
-  * @returns {Boolean} 是否modern包
-  */
-export const isModern = format => format === 'modern'
-
-/**
   * 获取babel options
   * @returns babel options
   */
@@ -80,7 +121,7 @@ export const getBabelOptions = isModern => ({
   * 生成版权banner
   * @returns 版权banner
   */
-export const getBanner = () => 'banner\n<%= pkg.name %>\nv<%= pkg.version %>\nby <%= pkg.author %>\nLicense:<%= pkg.license %>\n<%= pkg.homepage%>'
+export const getBanner = () => 'banner\n<%= pkg.name %>\nv<%= pkg.version %>\nby <%= pkg.author.name %>\nLicense:<%= pkg.license %>\n<%= pkg.homepage%>'
 
 /**
   * 获取terser options
@@ -99,15 +140,15 @@ export const getTerserOptions = () => ({
   * @param {Object} obj 参数对象
   * @returns 一个rollup配置对象
   */
-export const genConfig = ({ format, external, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES }) => ({
+export const genConfig = ({ format, file, isModern, external, globals, INPUT_FILE, PACKAGE_ROOT_PATH, LERNA_PACKAGE_NAME }) => ({
   input: INPUT_FILE,
 
   output: {
-    file: path.join(OUTPUT_DIR, `index.${format}.js`),
-    format: isModern(format) ? 'es' : format, // modern包以es格式输出
+    file: path.join(PACKAGE_ROOT_PATH, file),
+    format,
     sourcemap: false,
     name: transform2PascalCase(LERNA_PACKAGE_NAME),
-    globals: genGlobals(ALL_MODULES),
+    globals,
     amd: {
       id: LERNA_PACKAGE_NAME
     },
@@ -119,7 +160,7 @@ export const genConfig = ({ format, external, INPUT_FILE, OUTPUT_DIR, LERNA_PACK
   plugins: [
     nodeResolve(),
     commonjs(),
-    babel(getBabelOptions(isModern(format))),
+    babel(getBabelOptions(isModern)),
     banner(getBanner()),
     terser(getTerserOptions())
   ]
@@ -130,15 +171,15 @@ export const genConfig = ({ format, external, INPUT_FILE, OUTPUT_DIR, LERNA_PACK
   * @param {Object} obj 参数对象
   * @returns 一个rollup配置对象
   */
-export const genVueConfig = ({ format, external, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES }) => ({
+export const genVueConfig = ({ format, file, isModern, external, globals, INPUT_FILE, PACKAGE_ROOT_PATH, LERNA_PACKAGE_NAME }) => ({
   input: INPUT_FILE,
 
   output: {
-    file: path.join(OUTPUT_DIR, `index.${format}.js`),
-    format: isModern(format) ? 'es' : format, // modern包以es格式输出
+    file: path.join(PACKAGE_ROOT_PATH, file),
+    format,
     sourcemap: false,
     name: transform2PascalCase(LERNA_PACKAGE_NAME),
-    globals: genGlobals(ALL_MODULES),
+    globals,
     amd: {
       id: LERNA_PACKAGE_NAME
     },
@@ -150,14 +191,12 @@ export const genVueConfig = ({ format, external, INPUT_FILE, OUTPUT_DIR, LERNA_P
   plugins: [
     nodeResolve(),
     commonjs(),
-    babel(getBabelOptions(isModern(format))),
+    babel(getBabelOptions(isModern)),
     vue({
       css: false, // 不内联css，提取css并使用rollup-plugin-css-only处理css；https://rollup-plugin-vue.vuejs.org/migrating.html
       compileTemplate: true // 使用把template编译为render函数
     }),
-    css({
-      output: 'index.css'
-    }),
+    css({ output: 'index.css' }),
     banner(getBanner()),
     terser(getTerserOptions())
   ]

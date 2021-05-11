@@ -5,27 +5,23 @@
 
 import path from 'path'
 
-import { genConfig, getAllModules, getFormats } from './utils'
+import { genConfig, genGlobals, getAllModules, getFormats } from './utils'
 
 const { LERNA_PACKAGE_NAME, LERNA_ROOT_PATH } = process.env
 
 const PACKAGE_ROOT_PATH = process.cwd()
 const INPUT_FILE = path.join(PACKAGE_ROOT_PATH, 'src/index.js')
-const OUTPUT_DIR = path.join(PACKAGE_ROOT_PATH, 'dist')
 const PKG = require(path.join(PACKAGE_ROOT_PATH, 'package.json'))
-const IS_BROWSER_BUNDLE = !!PKG.browser
 
-const ALL_MODULES = getAllModules(LERNA_ROOT_PATH)
-
-const formats = getFormats(IS_BROWSER_BUNDLE)
+const globals = genGlobals(getAllModules(LERNA_ROOT_PATH))
 
 const external = [
   ...Object.keys(PKG.dependencies || {}),
   ...Object.keys(PKG.peerDependencies || {})
 ]
 
-const genParams = format => ({ format, external, INPUT_FILE, OUTPUT_DIR, LERNA_PACKAGE_NAME, ALL_MODULES })
+const genParams = format => ({ ...format, external, globals, INPUT_FILE, PACKAGE_ROOT_PATH, LERNA_PACKAGE_NAME })
 
-export default formats
+export default getFormats(PKG)
   .map(genParams)
   .map(genConfig)
