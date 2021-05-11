@@ -103,7 +103,7 @@ const TPL_PKG_LIB = `{
   "unpkg": "./dist/index.umd.js",
   "scripts": {
     "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c ../../build/base.js",
-    "prejsdoc2mdx": "rm -rf ./stories/*",
+    "prejsdoc2mdx": "shx rm -rf ./stories/*",
     "jsdoc2mdx": "lerna exec --scope @{{scope}}/{{fileName}} -- node ../../build/jsdoc2mdx.js"
   },
   "directories": {
