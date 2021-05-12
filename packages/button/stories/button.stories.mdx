@@ -1,4 +1,13 @@
-import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs/blocks'
+<!-- args定义参考:https://storybook.js.org/docs/vue/writing-stories/args -->
+<!-- argTypes定义参考:https://storybook.js.org/docs/react/essentials/controls#annotation -->
+
+import {
+  Meta,
+  Canvas,
+  Story,
+  ArgsTable,
+  Description
+} from '@storybook/addon-docs/blocks'
 import BaButton from '../src/button.vue'
 
 <Meta
@@ -15,20 +24,27 @@ import BaButton from '../src/button.vue'
 export const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { BaButton },
-  template: '<BaButton @onClick="onClick" v-bind="$props" />'
+  template: `<BaButton @onClick="onClick" v-bind="$props" />`
 })
 
 # BaButton
 
-A button component base on vue
+<!-- 读取组件描述 -->
+
+<Description of={BaButton} />
 
 <Canvas>
-  <Story name="Primary" args={{ label: '按钮' }}>
+  <Story
+    name="Primary"
+    args={{
+      label: '按钮'
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="Primary"></ArgsTable>
+<ArgsTable of={BaButton} />
 
 ## Large
 

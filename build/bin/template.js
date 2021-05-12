@@ -38,7 +38,10 @@ const TPL_VUE = `<template>
 </template>
 
 <script>
-
+/**
+ * 组件描述，此描述将展示在mdx的Description中
+ * vue的jsdoc注释风格参考：https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-docgen-api#full-example
+ */
 export default {
   name: '{{prefix}}{{compName}}'
 }
@@ -225,7 +228,16 @@ Primary.args = {
 // label: 'Button'
 // }`
 
-const TPL_STORIES_MDX_VUE = `import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs/blocks'
+const TPL_STORIES_MDX_VUE = `<!-- args定义参考:https://storybook.js.org/docs/vue/writing-stories/args -->
+<!-- argTypes定义参考:https://storybook.js.org/docs/react/essentials/controls#annotation -->
+
+import {
+  Meta,
+  Canvas,
+  Story,
+  ArgsTable,
+  Description
+} from '@storybook/addon-docs/blocks'
 import {{prefix}}{{compName}} from '../src/{{fileName}}.vue'
 
 <!-- 设置 meta 信息 -->
@@ -240,12 +252,14 @@ import {{prefix}}{{compName}} from '../src/{{fileName}}.vue'
 export const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { {{prefix}}{{compName}} },
-  template: '<{{prefix}}{{compName}} v-bind="$props" />'
+  template: '<{{prefix}}{{compName}} v-bind="$props" @onXxx="onXxx" />'
 })
 
 # {{prefix}}{{compName}}
 
-A {{fileName}} component base on vue
+<!-- 读取组件描述 -->
+
+<Description of={{{{prefix}}{{compName}}}} />
 
 <Canvas>
   <Story name="Primary" args={{ TODO }}>
@@ -254,7 +268,7 @@ A {{fileName}} component base on vue
 </Canvas>
 
 <!-- 主 story，建议设置 ArgsTable -->
-<ArgsTable story="Primary"></ArgsTable>
+<ArgsTable of="{{{prefix}}{{compName}}}"></ArgsTable>
 
 ## SubStory
 <!-- 子 story -->
