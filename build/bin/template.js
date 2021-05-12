@@ -60,7 +60,7 @@ const TPL_PKG_VUE = `{
    "main": "./dist/index.cjs.js",
    "exports": {
      "import":"./dist/index.modern.mjs",
-     "require":"./dist/index.cjs.js",
+     "require":"./dist/index.cjs.js"
    },
    "module": "./dist/index.es.js",
    "browser": "./dist/index.umd.js",
@@ -102,7 +102,7 @@ const TPL_PKG_LIB = `{
   "main": "./dist/index.cjs.js",
   "exports": {
     "import":"./dist/index.modern.mjs",
-    "require":"./dist/index.cjs.js",
+    "require":"./dist/index.cjs.js"
   },
   "module": "./dist/index.es.js",
   "browser": "./dist/index.umd.js",
