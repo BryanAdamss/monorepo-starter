@@ -249,10 +249,36 @@ import {{prefix}}{{compName}} from '../src/{{fileName}}.vue'
 
 <!-- 创建容器组件 -->
 
-export const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { {{prefix}}{{compName}} },
-  template: '<{{prefix}}{{compName}} v-bind="$props" @onXxx="onXxx" />'
+export const Template = (args, storyCtx) => ({
+  // args包含storybook的所有参数，包含props、slots、listeners
+  // storyCtx除了包含args外，还包含更多额外信息
+  props: Object.keys(args), // 接收所有args上的参数，并将其定义为props，直接通过this可访问
+  mounted() {
+    console.log('storyCtx', storyCtx)
+    // 修复component name错误
+    const {
+      parameters: {
+        component: { name }
+      }
+    } = storyCtx
+    this._vnode.tag = name || '{{prefix}}{{compName}}'
+  },
+  render(h) {
+    return h({{prefix}}{{compName}}, {
+      props: this.$props,
+      scopedSlots: {
+        // 默认插槽
+        default: (props) => {
+          // default通过args绑定到props上，所以可以通过this.props直接访问
+          return this.default ? h(this.default, { props }) : void 0
+        },
+        // 具名插槽
+        icon: (props) => {
+          return this.icon ? h(this.icon, { props }) : void 0
+        }
+      }
+    })
+  }
 })
 
 # {{prefix}}{{compName}}
@@ -273,10 +299,48 @@ export const Template = (args, { argTypes }) => ({
 ## SubStory
 <!-- 子 story -->
 
+这里是SubStory的描述
+
 <Canvas>
   <Story
     name="SubStory"
     args={{ TODO }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## SlotStory
+<!-- 插槽 story -->
+
+这里是SlotStory的描述
+
+<!-- 由于story自动生成的code样例无法展示slot，建议通过docs.source.code手动定义 -->
+
+<Canvas>
+  <Story
+    name="SlotIcon"
+    args={{
+      label: '按钮',
+      icon: {
+        // 以template形式声明组件
+        template: '<span>x</span>'
+      }
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: \`
+<template>
+  <{{prefix}}{{compName}}>
+    <template #icon>
+      <span>x</span>
+    </template>
+  </{{prefix}}{{compName}}>
+</template>\`
+        }
+      }
+    }}
   >
     {Template.bind({})}
   </Story>

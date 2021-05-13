@@ -21,10 +21,36 @@ import BaButton from '../src/button.vue'
 
 <!-- 创建容器组件 -->
 
-export const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { BaButton },
-  template: `<BaButton @onClick="onClick" v-bind="$props" />`
+export const Template = (args, storyCtx) => ({
+  // args包含storybook的所有参数，包含props、slots、listeners
+  // storyCtx除了包含args外，还包含更多额外信息
+  props: Object.keys(args), // 接收所有args上的参数，并将其定义为props，直接通过this可访问
+  mounted() {
+    console.log('storyCtx', storyCtx)
+    // 修复component name错误
+    const {
+      parameters: {
+        component: { name }
+      }
+    } = storyCtx
+    this._vnode.tag = name || 'BaButton'
+  },
+  render(h) {
+    return h(BaButton, {
+      props: this.$props,
+      scopedSlots: {
+        // 默认插槽
+        default: (props) => {
+          // default通过args绑定到props上，所以可以通过this.props直接访问
+          return this.default ? h(this.default, { props }) : void 0
+        },
+        // 具名插槽
+        icon: (props) => {
+          return this.icon ? h(this.icon, { props }) : void 0
+        }
+      }
+    })
+  }
 })
 
 # BaButton
@@ -46,7 +72,7 @@ export const Template = (args, { argTypes }) => ({
 
 <ArgsTable of={BaButton} />
 
-## Large
+## 尺寸
 
 可以通过设置`size`控制按钮大小；可选值有`['small', 'medium', 'large']`；默认`medium`
 
@@ -62,7 +88,7 @@ export const Template = (args, { argTypes }) => ({
   </Story>
 </Canvas>
 
-## BgColor
+## 颜色
 
 可通过设置`backgroundColor`控制背景颜色；支持`hex、rgb、rgba、关键字`
 
@@ -72,6 +98,41 @@ export const Template = (args, { argTypes }) => ({
     args={{
       backgroundColor: 'red',
       label: '颜色'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## slot:icon
+
+可通过`icon`插槽自定义图标样式
+
+<!-- 由于story自动生成的code样例无法展示slot，建议通过docs.source.code手动定义 -->
+
+<Canvas>
+  <Story
+    name="SlotIcon"
+    args={{
+      label: '按钮',
+      icon: {
+        // 以template形式声明组件
+        template: '<span>x</span>'
+      }
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<template>
+  <BaButton>
+    <template #icon>
+      <span>x</span>
+    </template>
+  </BaButton>
+</template>`
+        }
+      }
     }}
   >
     {Template.bind({})}
