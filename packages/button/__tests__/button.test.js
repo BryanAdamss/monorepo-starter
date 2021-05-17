@@ -17,6 +17,6 @@ describe('<Button/>', () => {
   })
 
   it('should be button', () => {
-    expect(wrapper.element.tagName).toBe('BUTTON')
+    expect(wrapper.element.tagName).toBe('DIV')
   })
 })
