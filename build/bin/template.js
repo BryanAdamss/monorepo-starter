@@ -294,7 +294,7 @@ export const Template = (args, storyCtx) => ({
 </Canvas>
 
 <!-- 主 story，建议设置 ArgsTable -->
-<ArgsTable of="{{{prefix}}{{compName}}}"></ArgsTable>
+<ArgsTable of={{{prefix}}{{compName}}}></ArgsTable>
 
 ## SubStory
 <!-- 子 story -->
