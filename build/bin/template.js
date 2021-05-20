@@ -156,7 +156,7 @@ const TPL_README = `# \`@{{scope}}/{{fileName}}\`
 
  ## Usage
  \`\`\`
- import { TODO } from @{{scope}}/{{fileName}}
+ import { TODO } from '@{{scope}}/{{fileName}}'
  \`\`\`
 
  ## Document
