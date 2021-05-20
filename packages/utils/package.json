@@ -19,8 +19,7 @@
   "unpkg": "./dist/index.umd.js",
   "scripts": {
     "build": "lerna exec --scope @ba/utils -- rollup -c ../../build/base.js",
-    "prejsdoc2mdx": "shx rm -rf ./stories/*",
-    "jsdoc2mdx": "lerna exec --scope @ba/utils -- node ../../build/jsdoc2mdx.js"
+    "jsdoc2mdx": "lerna exec --scope @ba/utils -- node ../../build/bin/jsdoc2mdx.js"
   },
   "directories": {
     "lib": "lib",

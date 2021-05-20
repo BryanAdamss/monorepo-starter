@@ -146,20 +146,15 @@ const TPL_README = `# \`@{{scope}}/{{fileName}}\`
 
  ## Install
  
- \`\`\`
+\`\`\`bash
  npm i @{{scope}}/{{fileName}}
- \`\`\`
+
  or
- \`\`\`
+
  yarn add @{{scope}}/{{fileName}}
- \`\`\`
+\`\`\`
 
- ## Usage
- \`\`\`
- import { TODO } from '@{{scope}}/{{fileName}}'
- \`\`\`
-
- ## Document
+ ## API
  For more information see the [Document reference](TODO:document link).
 
  `
@@ -346,6 +341,40 @@ export const Template = (args, storyCtx) => ({
   </Story>
 </Canvas>`
 
+const TPL_STORIES_MDX_LIB = `import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Libs/{{fileName}}"
+  parameters={{ previewTabs: { canvas: { hidden: true } },docsOnly:true }}
+/>
+
+# @{{scope}}/{{fileName}}
+
+## Install
+
+\`\`\`bash
+npm i @{{scope}}/{{fileName}} --registry=https://artifacts.iflytek.com/artifactory/api/npm/npm-repo/
+
+or
+
+yarn add @{{scope}}/{{fileName}} --registry=https://artifacts.iflytek.com/artifactory/api/npm/npm-repo/
+\`\`\`
+
+## Usage
+
+\`\`\`js
+import { TODO } from '@{{scope}}/{{fileName}}'
+\`\`\`
+
+## API
+
+<!-- jsdoc2mdContentTag -->
+
+{{jsdoc2mdContent}}
+
+<!-- jsdoc2mdContentTagEnd -->
+`
+
 const TPL_TEST_LIB = `import { xxx } from '../src'
 
 describe('xxx', () => {
@@ -382,5 +411,6 @@ module.exports = {
   TPL_TEST_LIB,
   TPL_STORIES_VUE,
   TPL_STORIES_MDX_VUE,
-  TPL_INDEX_LIB
+  TPL_INDEX_LIB,
+  TPL_STORIES_MDX_LIB
 }
