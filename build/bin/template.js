@@ -285,7 +285,7 @@ export const Template = (args, storyCtx) => ({
 
 <!-- 读取组件描述 -->
 
-<Description of={{{{prefix}}{{compName}}}} />
+<Description of={{{prefix}}{{compName}}} />
 
 <Canvas>
   <Story name="Primary" args={{ TODO }}>
@@ -294,7 +294,7 @@ export const Template = (args, storyCtx) => ({
 </Canvas>
 
 <!-- 主 story，建议设置 ArgsTable -->
-<ArgsTable of={{{prefix}}{{compName}}}></ArgsTable>
+<ArgsTable of={{{prefix}}{{compName}}} />
 
 ## SubStory
 <!-- 子 story -->
