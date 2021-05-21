@@ -113,7 +113,7 @@ const TPL_PKG_LIB = `{
   "scripts": {
     "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c ../../build/base.js",
     "prejsdoc2mdx": "shx rm -rf ./stories/*",
-    "jsdoc2mdx": "lerna exec --scope @{{scope}}/{{fileName}} -- node ../../build/jsdoc2mdx.js"
+    "jsdoc2mdx": "lerna exec --scope @{{scope}}/{{fileName}} -- node ../../build/bin/jsdoc2mdx.js"
   },
   "directories": {
     "lib": "lib",
