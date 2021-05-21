@@ -3,7 +3,7 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "ignoreChanges": ["**/__tests__/**", "**/*.md"],
+  "ignoreChanges": ["**/__tests__/**", "**/*.md", "**/*.mdx"],
   "command": {
     "bootstrap": {
       "registry": "https://registry.npm.taobao.org/"
