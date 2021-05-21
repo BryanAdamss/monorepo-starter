@@ -47,6 +47,8 @@ function save(content) {
 }
 
 function create() {
+  console.log('----- create jsdoc2md content -----')
+
   save(
     render(
       TPL_STORIES_MDX_LIB,
@@ -63,6 +65,8 @@ function update() {
   const old = fs.readFileSync(outputFile, 'utf-8')
 
   if (!old) return
+
+  console.log('----- update jsdoc2md content -----')
 
   const newOne = old.replace(
     /(<!-- jsdoc2mdContentTag -->).*(<!-- jsdoc2mdContentTagEnd -->)/gs,
