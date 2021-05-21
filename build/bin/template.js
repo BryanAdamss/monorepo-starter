@@ -156,7 +156,7 @@ const TPL_README = `# \`@{{scope}}/{{fileName}}\`
 
  `
 
-const TPL_SCSS = `@import '../../../sass/_utils';
+const TPL_SCSS = `@import '../../../public/sass/_utils';
 
 .{{scope}}-{{compName}} {
   &-hd {
