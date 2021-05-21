@@ -137,8 +137,6 @@ const TPL_PKG_LIB = `{
 const TPL_README = `# \`@{{scope}}/{{fileName}}\`
  
  > {{chineseName}}
-
- TODO:description
  
  ## Prepare
  - \`vue@^2.6.12\`
@@ -187,8 +185,8 @@ describe('<{{prefix}}{{compName}}/>', () => {
     propsData: {}
   })
 
-  it('should be xxx', () => {
-    // expect(wrapper.xxx).toBe(xxx)
+  it('should be DIV', () => {
+    expect(wrapper.element.tagName).toBe('DIV')
   })
 })`
 
@@ -280,6 +278,8 @@ export const Template = (args, storyCtx) => ({
 <!-- 读取组件描述 -->
 
 <Description of={{{prefix}}{{compName}}} />
+
+## Primary
 
 <Canvas>
   <Story name="Primary" args={{ TODO }}>
