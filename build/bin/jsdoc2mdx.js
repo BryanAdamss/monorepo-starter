@@ -6,6 +6,7 @@
 const fs = require('fs')
 const path = require('path')
 const jsdoc2md = require('jsdoc-to-markdown')
+const prettier = require('prettier')
 const fileSave = require('file-save')
 const render = require('json-templater/string')
 const { scope } = require('../../component.config')
@@ -30,9 +31,19 @@ function getJsdoc2mdContent() {
   return jsdoc2md.renderSync({ data: templateData })
 }
 
+function formatMDX(content) {
+  return prettier.format(content, {
+    tabWidth: 2,
+    semi: false,
+    singleQuote: true,
+    trailingComma: 'none',
+    parser: 'mdx'
+  })
+}
+
 function save(content) {
   fileSave(outputFile)
-    .write(content)
+    .write(formatMDX(content))
     .end(eol)
 }
 
