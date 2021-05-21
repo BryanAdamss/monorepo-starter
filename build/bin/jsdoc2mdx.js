@@ -44,7 +44,6 @@ function formatMDX(content) {
 function save(content) {
   fileSave(outputFile)
     .write(formatMDX(content))
-    .end(eol)
 }
 
 function create() {
