@@ -279,10 +279,10 @@ export const Template = (args, storyCtx) => ({
 
 <Description of={{{prefix}}{{compName}}} />
 
-## Primary
+## primary
 
 <Canvas>
-  <Story name="Primary" args={{ TODO }}>
+  <Story name="primary" args={{ TODO }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -290,30 +290,30 @@ export const Template = (args, storyCtx) => ({
 <!-- 主 story，建议设置 ArgsTable -->
 <ArgsTable of={{{prefix}}{{compName}}} />
 
-## SubStory
+## subStory
 <!-- 子 story -->
 
-这里是SubStory的描述
+这里是subStory的描述
 
 <Canvas>
   <Story
-    name="SubStory"
+    name="subStory"
     args={{ TODO }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-## SlotStory
+## slotStory
 <!-- 插槽 story -->
 
-这里是SlotStory的描述
+这里是slotStory的描述
 
 <!-- 由于story自动生成的code样例无法展示slot，建议通过docs.source.code手动定义 -->
 
 <Canvas>
   <Story
-    name="SlotIcon"
+    name="slotIcon"
     args={{
       label: '按钮',
       icon: {
