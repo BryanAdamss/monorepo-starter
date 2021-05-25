@@ -2,7 +2,6 @@
  * @author GuangHui
  * @description storybook 主配置文件（配置插件，入口）
  */
-const path = require('path')
 
 module.exports = {
   stories: [
