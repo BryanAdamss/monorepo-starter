@@ -1,3 +1,19 @@
+<!-- args定义参考:https://storybook.js.org/docs/vue/writing-stories/args -->
+<!-- argTypes定义参考:https://storybook.js.org/docs/react/essentials/controls#annotation -->
+
+import {
+  Meta,
+  Canvas,
+  Story,
+  ArgsTable,
+  Description
+} from '@storybook/addon-docs/blocks'
+
+<Meta
+  title="intro"
+  parameters={{ previewTabs: { canvas: { hidden: true } }, docsOnly: true }}
+/>
+
 # monorepo-starter
 
 A monorepo starter for UI components develop. Use lerna,yarn workspaces, rollup, storybook etc.

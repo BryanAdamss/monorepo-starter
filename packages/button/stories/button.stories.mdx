@@ -47,6 +47,10 @@ export const Template = (args, storyCtx) => ({
         // 具名插槽
         icon: (props) => {
           return this.icon ? h(this.icon, { props }) : void 0
+        },
+        // 具名插槽
+        extra: (props) => {
+          return this.extra ? h(this.extra, { props }) : void 0
         }
       }
     })
@@ -61,7 +65,7 @@ export const Template = (args, storyCtx) => ({
 
 <Canvas>
   <Story
-    name="Primary"
+    name="primary"
     args={{
       label: '按钮'
     }}
@@ -78,7 +82,7 @@ export const Template = (args, storyCtx) => ({
 
 <Canvas>
   <Story
-    name="Large"
+    name="large"
     args={{
       size: 'large',
       label: '大小'
@@ -94,7 +98,7 @@ export const Template = (args, storyCtx) => ({
 
 <Canvas>
   <Story
-    name="BgColor"
+    name="backgroundColor"
     args={{
       backgroundColor: 'red',
       label: '颜色'
@@ -104,15 +108,15 @@ export const Template = (args, storyCtx) => ({
   </Story>
 </Canvas>
 
-## slot:icon
+## v-slot:icon
 
-可通过`icon`插槽自定义图标样式
+可通过`icon插槽`自定义图标样式
 
 <!-- 由于story自动生成的code样例无法展示slot，建议通过docs.source.code手动定义 -->
 
 <Canvas>
   <Story
-    name="SlotIcon"
+    name="v-slot:icon"
     args={{
       label: '按钮',
       icon: {
@@ -126,8 +130,42 @@ export const Template = (args, storyCtx) => ({
           code: `
 <template>
   <BaButton>
-    <template #icon>
+    <template v-slot:icon>
       <span>x</span>
+    </template>
+  </BaButton>
+</template>`
+        }
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## v-slot:extra
+
+`extra插槽`可用来定义额外信息，对外暴露`{label}`
+
+<Canvas>
+  <Story
+    name="v-slot:extra"
+    args={{
+      label: '测试extra插槽',
+      extra: {
+        props: ['label'],
+        // 以template形式声明组件
+        template: '<h1>{{label}}</h1>'
+      }
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<template>
+  <BaButton>
+    <template v-slot:extra="{label}">
+        <h1>{{ label }}</h1>
     </template>
   </BaButton>
 </template>`

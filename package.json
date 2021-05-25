@@ -1,7 +1,7 @@
 {
   "name": "root",
   "private": true,
-  "description": "A monorepo starter for UI components. Use lerna,yarn workspaces, rollup, storybook etc.",
+  "description": "A monorepo starter for UI components develop. Use lerna,yarn workspaces, rollup, storybook etc.",
   "author": {
     "name": "GuangHui",
     "email": "bryanadamss@foxmail.com",

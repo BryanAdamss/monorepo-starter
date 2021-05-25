@@ -7,8 +7,14 @@
     <!-- @slot icon插槽 -->
     <slot name="icon">✔</slot>
 
-    <!-- @slot 默认插槽；对外暴露label变量 -->
+    <!-- @slot 默认插槽；默认渲染label；对外暴露label变量 -->
     <slot :label="label">{{ label }}</slot>
+
+    <!-- @slot extra插槽；对外暴露label变量 -->
+    <slot
+      name="extra"
+      v-bind="{label}"
+    />
   </div>
 </template>
 
