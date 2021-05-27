@@ -7,7 +7,7 @@ const chokidar = require('chokidar')
 const path = require('path')
 const { execSync } = require('child_process')
 const { packagesDirName } = require('../../project.config')
-const { log } = require('../shared/log')
+const { log } = require('../shared/tool')
 
 function execJsDoc2mdx(changedPath) {
   log(`${changedPath} changed`)

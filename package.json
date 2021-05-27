@@ -25,6 +25,7 @@
     "test": "jest --config test/unit/jest.config.js --coverage",
     "new:comp": "node build/bin/new-comp.js",
     "new:lib": "node build/bin/new-lib.js",
+    "new:assets": "node build/bin/new-assets.js",
     "pkgs": "lerna ls -pla",
     "pkgs:deps": "lerna ls --graph",
     "prepublishOnly": "yarn build"

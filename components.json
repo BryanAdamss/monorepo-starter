@@ -1,0 +1,18 @@
+{
+  "button": {
+    "type": "comp",
+    "path": "./packages/button"
+  },
+  "hello": {
+    "type": "lib",
+    "path": "./packages/hello"
+  },
+  "svg-assets": {
+    "type": "assets",
+    "path": "./packages/svg-assets"
+  },
+  "utils": {
+    "type": "lib",
+    "path": "./packages/utils"
+  }
+}

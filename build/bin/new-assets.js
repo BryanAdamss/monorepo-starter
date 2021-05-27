@@ -1,6 +1,6 @@
 /**
  * @author GuangHui
- * @description 创建新vue组件包
+ * @description 创建新assets包
  */
 
 if (!process.argv[2]) {
@@ -32,52 +32,28 @@ const params = {
 }
 
 const {
-  TPL_INDEX,
-  TPL_VUE,
-  TPL_PKG_VUE,
+  TPL_PKG_LIB,
   TPL_README,
-  TPL_SCSS,
-  TPL_TEST,
-  TPL_STORIES_MDX_VUE
+  TPL_INDEX_ASSETS
 } = require('./template')
 
-const packagePath = path.join(__dirname, `../../${packagesDirName}`, fileName)
+const packagePath = path.resolve(__dirname, `../../${packagesDirName}`, fileName)
 
 const tplMap = {
   index: {
-    tpl: TPL_INDEX,
+    tpl: TPL_INDEX_ASSETS,
     params,
     name: './src/index.js'
-  },
-  vue: {
-    tpl: TPL_VUE,
-    params,
-    name: `./src/${fileName}.vue`
   },
   readme: {
     tpl: TPL_README,
     params,
     name: './README.md'
   },
-  stories: {
-    tpl: TPL_STORIES_MDX_VUE,
-    params,
-    name: `./stories/${fileName}.stories.mdx`
-  },
   package: {
-    tpl: TPL_PKG_VUE,
+    tpl: TPL_PKG_LIB,
     params,
     name: './package.json'
-  },
-  test: {
-    tpl: TPL_TEST,
-    params,
-    name: `./__tests__/${fileName}.test.js`
-  },
-  scss: {
-    tpl: TPL_SCSS,
-    params,
-    name: `./src/${fileName}.scss`
   }
 }
 
@@ -87,6 +63,6 @@ Object.entries(tplMap).forEach(([key, { tpl, params, name }]) => {
     .end(eol)
 })
 
-updateCompJson(fileName, 'comp')
+updateCompJson(fileName, 'assets')
 
 log('DONE!')

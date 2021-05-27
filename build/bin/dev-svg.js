@@ -7,7 +7,7 @@ const { join } = require('path')
 const { svgPkgName, publicDirName, packagesDirName } = require('../../project.config')
 const chokidar = require('chokidar')
 const { execSync } = require('child_process')
-const { log } = require('../shared/log')
+const { log } = require('../shared/tool')
 
 function execCopySvgs(changedPath, stats) {
   log(`${changedPath} changed`)

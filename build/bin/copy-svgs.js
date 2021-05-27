@@ -7,7 +7,7 @@ const { join, parse } = require('path')
 const fileSave = require('file-save')
 const eol = require('os').EOL
 const { svgPkgName, packagesDirName, publicDirName } = require('../../project.config')
-const { log } = require('../shared/log')
+const { log } = require('../shared/tool')
 
 require('copy')(
   join(__dirname, `../../${publicDirName}/svgs/*`),

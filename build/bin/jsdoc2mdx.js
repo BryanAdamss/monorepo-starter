@@ -11,7 +11,7 @@ const fileSave = require('file-save')
 const render = require('json-templater/string')
 const { scope } = require('../../project.config')
 const eol = require('os').EOL
-const { log } = require('../shared/log')
+const { log } = require('../shared/tool')
 
 const { TPL_STORIES_MDX_LIB } = require('./template')
 
