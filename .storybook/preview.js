@@ -11,3 +11,11 @@ export const parameters = {
   // 设置全局的actions模式，可自动生成action，方便模拟事件处理函数(不用手动编写事件处理函数)
   actions: { argTypesRegex: '^on[A-Z].*' }
 }
+
+// export const decorators = {}
+
+// export const globalTypes = {}
+
+const requireAll = (requireContext) => requireContext.keys().map(requireContext)
+// 导入全部svg
+requireAll(require.context('../public/svgs', false, /\.svg$/))

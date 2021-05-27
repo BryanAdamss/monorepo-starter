@@ -18,8 +18,10 @@
   "browser": "./dist/index.umd.js",
   "unpkg": "./dist/index.umd.js",
   "scripts": {
+    "prebuild": "yarn copy:svgs",
     "build": "lerna exec --scope @ba/svg-assets -- rollup -c ../../build/base.js",
-    "jsdoc2mdx": "lerna exec --scope @ba/svg-assets -- node ../../build/bin/jsdoc2mdx.js"
+    "precopy:svgs": "shx rm -rf assets/*",
+    "copy:svgs": "node ../../build/bin/copy-svgs.js"
   },
   "directories": {
     "lib": "lib",
