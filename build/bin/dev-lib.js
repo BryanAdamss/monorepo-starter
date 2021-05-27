@@ -6,11 +6,11 @@
 const chokidar = require('chokidar')
 const path = require('path')
 const { execSync } = require('child_process')
-const log = console.log.bind(console)
 const { packagesDirName } = require('../../project.config')
+const { log } = require('../shared/log')
 
 function execJsDoc2mdx(changedPath) {
-  log(`-------${changedPath} changed-------`)
+  log(`${changedPath} changed`)
   const { dir } = path.parse(changedPath)
   const [packagesDir, pkgName] = dir.split(path.sep).slice(0, 2)
 

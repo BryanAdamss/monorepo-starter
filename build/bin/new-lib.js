@@ -14,6 +14,7 @@ const uppercamelcase = require('uppercamelcase')
 const { scope, prefix } = require('../../project.config')
 const render = require('json-templater/string')
 const eol = require('os').EOL
+const { log } = require('../shared/log')
 
 const fileName = process.argv[2]
 const chineseName = process.argv[3] || fileName
@@ -65,4 +66,4 @@ Object.entries(tplMap).forEach(([key, { tpl, params, name }]) => {
     .end(eol)
 })
 
-console.log('DONE!')
+log('DONE!')

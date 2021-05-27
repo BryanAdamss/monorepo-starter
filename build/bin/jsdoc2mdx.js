@@ -11,6 +11,7 @@ const fileSave = require('file-save')
 const render = require('json-templater/string')
 const { scope } = require('../../project.config')
 const eol = require('os').EOL
+const { log } = require('../shared/log')
 
 const { TPL_STORIES_MDX_LIB } = require('./template')
 
@@ -47,7 +48,7 @@ function save(content) {
 }
 
 function create() {
-  console.log('----- create jsdoc2md content -----')
+  log('create jsdoc2md content')
 
   save(
     render(
@@ -66,7 +67,7 @@ function update() {
 
   if (!old) return
 
-  console.log('----- update jsdoc2md content -----')
+  log('update jsdoc2md content')
 
   const newOne = old.replace(
     /(<!-- jsdoc2mdContentTag -->).*(<!-- jsdoc2mdContentTagEnd -->)/gs,

@@ -7,10 +7,10 @@ const { join } = require('path')
 const { svgPkgName, publicDirName, packagesDirName } = require('../../project.config')
 const chokidar = require('chokidar')
 const { execSync } = require('child_process')
-const log = console.log.bind(console)
+const { log } = require('../shared/log')
 
 function execCopySvgs(changedPath, stats) {
-  log(`-------${changedPath} changed-------`)
+  log(`${changedPath} changed`)
 
   try {
     execSync('yarn copy:svgs', {

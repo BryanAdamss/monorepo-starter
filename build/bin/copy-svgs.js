@@ -7,6 +7,7 @@ const { join, parse } = require('path')
 const fileSave = require('file-save')
 const eol = require('os').EOL
 const { svgPkgName, packagesDirName, publicDirName } = require('../../project.config')
+const { log } = require('../shared/log')
 
 require('copy')(
   join(__dirname, `../../${publicDirName}/svgs/*`),
@@ -25,5 +26,5 @@ require('copy')(
 
 export default ${JSON.stringify(nameList).replace(/"/g, '\'').replace(',', ', ')}`).end(eol)
 
-    console.log(`copy ${publicDirName}/svgs -> ${packagesDirName}/${svgPkgName}/assets successed!`)
+    log(`copy ${publicDirName}/svgs -> ${packagesDirName}/${svgPkgName}/assets successed!`)
   })
