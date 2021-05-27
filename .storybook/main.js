@@ -29,6 +29,34 @@ module.exports = {
       // include: path.resolve(__dirname, '../')
     })
 
+    // add svgo-loader、svg-sprite-loader
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: 'svg-sprite-loader',
+          options: {
+            symbolId: `${scope}-[name]`
+          }
+        },
+        {
+          loader: 'svgo-loader',
+          options: {
+            configFile: path.join(__dirname, '../svgo.config.js')
+          }
+        }
+      ],
+      include: [path.join(__dirname, '../public/svgs')]
+    })
+
+    // exclude svg from file-loader avoid to conflict with svg-sprite-loader
+    const fileLoader = config.module.rules.find((rule) =>
+      rule.test.test('.svg')
+    )
+
+    fileLoader &&
+      (fileLoader.exclude = [path.join(__dirname, '../public/svgs')])
+
     // Return the altered config
     return config
   }
