@@ -28,7 +28,8 @@
     "test": "__tests__"
   },
   "files": [
-    "dist"
+    "dist",
+    "assets"
   ],
   "publishConfig": {
     "access": "public",
