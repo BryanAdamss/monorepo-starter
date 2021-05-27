@@ -1,5 +1,5 @@
 /**
- * @author ghchu
+ * @author GuangHui
  * @description 拷贝public/svgs -> packages/svg-assets
  */
 
