@@ -1,0 +1,42 @@
+{
+  "name": "@ba/svg-assets",
+  "version": "1.0.0",
+  "description": "A svg-assets",
+  "author": {
+    "name": "GuangHui",
+    "email": "bryanadamss@foxmail.com",
+    "url": "https://github.com/BryanAdamss"
+  },
+  "homepage": "https://github.com/BryanAdamss/monorepo-starter#readme",
+  "license": "MIT",
+  "main": "./dist/index.cjs.js",
+  "exports": {
+    "import": "./dist/index.modern.mjs",
+    "require": "./dist/index.cjs.js"
+  },
+  "module": "./dist/index.es.js",
+  "browser": "./dist/index.umd.js",
+  "unpkg": "./dist/index.umd.js",
+  "scripts": {
+    "build": "lerna exec --scope @ba/svg-assets -- rollup -c ../../build/base.js",
+    "jsdoc2mdx": "lerna exec --scope @ba/svg-assets -- node ../../build/bin/jsdoc2mdx.js"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BryanAdamss/monorepo-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BryanAdamss/monorepo-starter/issues"
+  }
+}

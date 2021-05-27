@@ -53,6 +53,7 @@
     "chokidar": "^3.5.1",
     "commitizen": "^4.2.3",
     "concurrently": "^6.2.0",
+    "copy": "^0.3.2",
     "css-loader": "^5.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.19.0",
