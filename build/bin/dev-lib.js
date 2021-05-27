@@ -11,14 +11,19 @@ const { log } = require('../shared/log')
 
 function execJsDoc2mdx(changedPath) {
   log(`${changedPath} changed`)
+
   const { dir } = path.parse(changedPath)
   const [packagesDir, pkgName] = dir.split(path.sep).slice(0, 2)
 
   if (packagesDir !== packagesDirName || !pkgName) return
 
-  execSync('yarn jsdoc2mdx', {
-    cwd: path.join(packagesDir, pkgName)
-  })
+  try {
+    execSync('yarn jsdoc2mdx', {
+      cwd: path.join(packagesDir, pkgName)
+    })
+  } catch (error) {
+    log('execSync(\'yarn jsdoc2mdx\')失败')
+  }
 }
 
 chokidar
