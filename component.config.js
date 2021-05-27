@@ -5,5 +5,6 @@
 
 module.exports = {
   scope: 'ba', // @ba/button @ba/utils
-  prefix: 'Ba' // 组件名前缀 BaButton BaUtils
+  prefix: 'Ba', // 组件名前缀 BaButton BaUtils
+  svgPkgName: 'svg-assets' // svg包名
 }
