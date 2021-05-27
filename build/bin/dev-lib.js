@@ -1,5 +1,5 @@
 /**
- * @author ghchu
+ * @author GuangHui
  * @description 开发环境监听lib变化
  */
 
