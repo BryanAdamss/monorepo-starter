@@ -51,6 +51,7 @@ export default {
 
 const TPL_PKG_VUE = `{
    "name": "@{{scope}}/{{fileName}}",
+   "_pkgType":"comp",
    "version": "1.0.0",
    "description": "A vue {{fileName}} component",
    "author": {
@@ -93,6 +94,7 @@ const TPL_PKG_VUE = `{
 
 const TPL_PKG_LIB = `{
   "name": "@{{scope}}/{{fileName}}",
+  "_pkgType":"lib",
   "version": "1.0.0",
   "description": "A {{fileName}}",
   "author": {
@@ -136,6 +138,7 @@ const TPL_PKG_LIB = `{
 
 const TPL_PKG_ASSETS = `{
   "name": "@{{scope}}/{{fileName}}",
+  "_pkgType":"assets",
   "version": "1.0.0",
   "description": "A {{fileName}}",
   "author": {

@@ -1,5 +1,6 @@
 {
   "name": "@ba/svg-assets",
+  "_pkgType": "assets",
   "version": "1.0.0",
   "description": "A svg-assets",
   "author": {
