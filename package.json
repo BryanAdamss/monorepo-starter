@@ -26,7 +26,7 @@
     "new:lib": "node build/bin/new-lib.js",
     "pkgs": "lerna ls -pla",
     "pkgs:deps": "lerna ls --graph",
-    "prepublish": "yarn build"
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.13",
