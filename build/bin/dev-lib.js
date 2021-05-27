@@ -34,8 +34,9 @@ function getLibPath() {
     ).map(p => `${p}/src/**/*.js`)
 }
 
-const watcher = chokidar
-  .watch(getLibPath(), {
+const watcher = chokidar.watch(
+  getLibPath(),
+  {
     persistent: true,
     awaitWriteFinish: {
       stabilityThreshold: 300
