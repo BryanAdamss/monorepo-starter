@@ -4,7 +4,7 @@
  */
 
 const path = require('path')
-const { scope } = require('../component.config')
+const { scope } = require('../project.config')
 
 module.exports = {
   stories: [

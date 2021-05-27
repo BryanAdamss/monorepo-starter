@@ -1,6 +1,6 @@
 /**
  * @author GuangHui
- * @description 组件配置
+ * @description 项目配置
  */
 
 module.exports = {

@@ -4,7 +4,7 @@
  */
 
 const { join } = require('path')
-const { svgPkgName, publicDirName, packagesDirName } = require('../../component.config')
+const { svgPkgName, publicDirName, packagesDirName } = require('../../project.config')
 const chokidar = require('chokidar')
 const { execSync } = require('child_process')
 const log = console.log.bind(console)

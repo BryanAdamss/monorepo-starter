@@ -9,7 +9,7 @@ const jsdoc2md = require('jsdoc-to-markdown')
 const prettier = require('prettier')
 const fileSave = require('file-save')
 const render = require('json-templater/string')
-const { scope } = require('../../component.config')
+const { scope } = require('../../project.config')
 const eol = require('os').EOL
 
 const { TPL_STORIES_MDX_LIB } = require('./template')

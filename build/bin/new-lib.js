@@ -11,7 +11,7 @@ if (!process.argv[2]) {
 const path = require('path')
 const fileSave = require('file-save')
 const uppercamelcase = require('uppercamelcase')
-const { scope, prefix } = require('../../component.config')
+const { scope, prefix } = require('../../project.config')
 const render = require('json-templater/string')
 const eol = require('os').EOL
 
