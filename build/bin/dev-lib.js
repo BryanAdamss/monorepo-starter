@@ -3,11 +3,12 @@
  * @description 开发环境监听lib变化
  */
 
-const chokidar = require('chokidar')
 const path = require('path')
+const chokidar = require('chokidar')
 const { execSync } = require('child_process')
 const { packagesDirName } = require('../../project.config')
 const { log } = require('../shared/tool')
+const compsMap = require('../../components.json')
 
 function execJsDoc2mdx(changedPath) {
   log(`${changedPath} changed`)
@@ -26,11 +27,25 @@ function execJsDoc2mdx(changedPath) {
   }
 }
 
-chokidar
-  .watch(`${packagesDirName}/*/src/**/*.js`, {
+function getLibPath() {
+  return Object.entries(compsMap)
+    .reduce(
+      (acc, [key, { type, path }]) => type === 'lib' ? acc.concat(path) : acc, []
+    ).map(p => `${p}/src/**/*.js`)
+}
+
+const watcher = chokidar
+  .watch(getLibPath(), {
     persistent: true,
     awaitWriteFinish: {
       stabilityThreshold: 300
     }
   })
-  .on('change', execJsDoc2mdx)
+
+watcher
+  .on('ready', () => {
+    watcher
+      .on('add', execJsDoc2mdx)
+      .on('change', execJsDoc2mdx)
+      .on('unlink', execJsDoc2mdx)
+  })

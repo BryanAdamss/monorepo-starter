@@ -4,7 +4,10 @@
  */
 
 const { log } = require('../shared/tool')
-const { updateCompJson, isDuplicate } = require('../shared/update-comp')
+const {
+  updateCompJson,
+  isDuplicate
+} = require('../shared/update-comp')
 
 if (!process.argv[2]) {
   log('[包名]必填 - Please enter new name')

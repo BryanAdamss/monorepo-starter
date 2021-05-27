@@ -5,12 +5,12 @@
 
 const fs = require('fs')
 const path = require('path')
-const jsdoc2md = require('jsdoc-to-markdown')
+const eol = require('os').EOL
 const prettier = require('prettier')
 const fileSave = require('file-save')
+const jsdoc2md = require('jsdoc-to-markdown')
 const render = require('json-templater/string')
 const { scope } = require('../../project.config')
-const eol = require('os').EOL
 const { log } = require('../shared/tool')
 
 const { TPL_STORIES_MDX_LIB } = require('../template')

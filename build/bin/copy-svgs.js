@@ -6,7 +6,11 @@
 const { join, parse } = require('path')
 const fileSave = require('file-save')
 const eol = require('os').EOL
-const { svgPkgName, packagesDirName, publicDirName } = require('../../project.config')
+const {
+  svgPkgName,
+  packagesDirName,
+  publicDirName
+} = require('../../project.config')
 const { log } = require('../shared/tool')
 
 require('copy')(

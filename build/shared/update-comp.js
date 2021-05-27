@@ -7,7 +7,10 @@ const fs = require('fs')
 const { join } = require('path')
 const fileSave = require('file-save')
 const { stringify } = require('./tool')
-const { componentsJsonDir, packagesDirName } = require('../../project.config')
+const {
+  componentsJsonDir,
+  packagesDirName
+} = require('../../project.config')
 
 const input = join(__dirname, '../../', componentsJsonDir)
 
