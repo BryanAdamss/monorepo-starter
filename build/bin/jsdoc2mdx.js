@@ -13,7 +13,7 @@ const { scope } = require('../../project.config')
 const eol = require('os').EOL
 const { log } = require('../shared/tool')
 
-const { TPL_STORIES_MDX_LIB } = require('./template')
+const { TPL_STORIES_MDX_LIB } = require('../template')
 
 const { LERNA_PACKAGE_NAME } = process.env
 
