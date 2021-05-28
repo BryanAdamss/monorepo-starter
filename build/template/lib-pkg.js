@@ -24,7 +24,7 @@ module.exports = `{
   "browser": "./dist/index.umd.js",
   "unpkg": "./dist/index.umd.js",
   "scripts": {
-    "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c ../../build/base.js",
+    "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c ../../build/lib.js",
     "jsdoc2mdx": "lerna exec --scope @{{scope}}/{{fileName}} -- node ../../build/bin/jsdoc2mdx.js"
   },
   "directories": {

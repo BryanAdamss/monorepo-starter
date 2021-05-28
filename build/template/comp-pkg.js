@@ -24,7 +24,7 @@ module.exports = `{
   "browser": "./dist/index.umd.js",
   "unpkg": "./dist/index.umd.js",
   "scripts": {
-    "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c=../../build/vue.js"
+    "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c=../../build/comp.js"
   },
   "directories": {
     "lib": "lib",

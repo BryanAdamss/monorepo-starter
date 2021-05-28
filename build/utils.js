@@ -1,6 +1,6 @@
 /**
  * @author GuangHui
- * @description 构建工具函数
+ * @description rollup 工具函数
  */
 import { getPackagesSync } from '@lerna/project'
 import { isEqual, uniqWith } from 'lodash'
@@ -140,7 +140,7 @@ export const getTerserOptions = () => ({
   * @param {Object} obj 参数对象
   * @returns 一个rollup配置对象
   */
-export const genConfig = ({ format, file, isModern, external, globals, INPUT_FILE, PACKAGE_ROOT_PATH, LERNA_PACKAGE_NAME }) => ({
+export const genLibConf = ({ format, file, isModern, external, globals, INPUT_FILE, PACKAGE_ROOT_PATH, LERNA_PACKAGE_NAME }) => ({
   input: INPUT_FILE,
 
   output: {
@@ -171,7 +171,7 @@ export const genConfig = ({ format, file, isModern, external, globals, INPUT_FIL
   * @param {Object} obj 参数对象
   * @returns 一个rollup配置对象
   */
-export const genVueConfig = ({ format, file, isModern, external, globals, INPUT_FILE, PACKAGE_ROOT_PATH, LERNA_PACKAGE_NAME }) => ({
+export const genVueConf = ({ format, file, isModern, external, globals, INPUT_FILE, PACKAGE_ROOT_PATH, LERNA_PACKAGE_NAME }) => ({
   input: INPUT_FILE,
 
   output: {

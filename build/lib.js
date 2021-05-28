@@ -1,11 +1,11 @@
 /**
  * @author GuangHui
- * @description rollup vue配置
+ * @description rollup lib配置
  */
 
 import path from 'path'
 
-import { genGlobals, genVueConfig, getAllModules, getFormats } from './utils'
+import { genGlobals, genLibConf, getAllModules, getFormats } from './utils'
 
 const { LERNA_PACKAGE_NAME, LERNA_ROOT_PATH } = process.env
 
@@ -24,4 +24,4 @@ const genParams = format => ({ ...format, external, globals, INPUT_FILE, PACKAGE
 
 export default getFormats(PKG)
   .map(genParams)
-  .map(genVueConfig)
+  .map(genLibConf)

@@ -25,7 +25,7 @@ module.exports = `{
   "unpkg": "./dist/index.umd.js",
   "scripts": {
     "prebuild": "yarn copy:svgs",
-    "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c ../../build/base.js",
+    "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c ../../build/lib.js",
     "precopy:svgs": "shx rm -rf assets/*",
     "copy:svgs": "node ../../build/bin/copy-svgs.js"
   },
