@@ -17,5 +17,9 @@ export const parameters = {
 // export const globalTypes = {}
 
 const requireAll = (requireContext) => requireContext.keys().map(requireContext)
-// 导入全部svg
-requireAll(require.context('../public/svgs', false, /\.svg$/))
+
+// 导入内部svg
+requireAll(require.context('@ba/svg-assets/assets', false, /\.svg$/))
+
+// 导入自定义svg
+// requireAll(require.context('../public/svgs', false, /\.svg$/))
