@@ -3,33 +3,19 @@
  * @description 模板文件出口
  */
 
-const {
-  TPL_PKG_LIB,
-  TPL_README,
-  TPL_INDEX_ASSETS,
-  TPL_INDEX,
-  TPL_VUE,
-  TPL_PKG_VUE,
-  TPL_SCSS,
-  TPL_TEST,
-  TPL_STORIES_MDX_VUE,
-  TPL_INDEX_LIB,
-  TPL_TEST_LIB
-} = require('./template')
-
 const assets = (params) => ({
   index: {
-    tpl: TPL_INDEX_ASSETS,
+    tpl: require('./assets-index'),
     params,
     name: './src/index.js'
   },
   readme: {
-    tpl: TPL_README,
+    tpl: require('./readme'),
     params,
     name: './README.md'
   },
   package: {
-    tpl: TPL_PKG_LIB,
+    tpl: require('./assets-pkg'),
     params,
     name: './package.json'
   }
@@ -37,37 +23,37 @@ const assets = (params) => ({
 
 const comp = (params) => ({
   index: {
-    tpl: TPL_INDEX,
+    tpl: require('./comp-index'),
     params,
     name: './src/index.js'
   },
   vue: {
-    tpl: TPL_VUE,
+    tpl: require('./comp-vue'),
     params,
     name: `./src/${params.fileName}.vue`
   },
   readme: {
-    tpl: TPL_README,
+    tpl: require('./readme'),
     params,
     name: './README.md'
   },
   stories: {
-    tpl: TPL_STORIES_MDX_VUE,
+    tpl: require('./comp-mdx'),
     params,
     name: `./stories/${params.fileName}.stories.mdx`
   },
   package: {
-    tpl: TPL_PKG_VUE,
+    tpl: require('./comp-pkg'),
     params,
     name: './package.json'
   },
   test: {
-    tpl: TPL_TEST,
+    tpl: require('./comp-test'),
     params,
     name: `./__tests__/${params.fileName}.test.js`
   },
   scss: {
-    tpl: TPL_SCSS,
+    tpl: require('./comp-scss'),
     params,
     name: `./src/${params.fileName}.scss`
   }
@@ -75,22 +61,22 @@ const comp = (params) => ({
 
 const lib = (params) => ({
   index: {
-    tpl: TPL_INDEX_LIB,
+    tpl: require('./lib-index'),
     params,
     name: './src/index.js'
   },
   test: {
-    tpl: TPL_TEST_LIB,
+    tpl: require('./lib-test'),
     params,
     name: `./__tests__/${params.fileName}.test.js`
   },
   readme: {
-    tpl: TPL_README,
+    tpl: require('./readme'),
     params,
     name: './README.md'
   },
   package: {
-    tpl: TPL_PKG_LIB,
+    tpl: require('./lib-pkg'),
     params,
     name: './package.json'
   }
