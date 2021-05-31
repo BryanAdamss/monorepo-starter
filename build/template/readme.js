@@ -14,11 +14,11 @@ module.exports = `# \`@{{scope}}/{{fileName}}\`
 ## Install
 
 \`\`\`bash
-npm i @{{scope}}/{{fileName}} --registry=https://artifacts.iflytek.com/artifactory/api/npm/npm-repo/
+npm i @{{scope}}/{{fileName}}
 
 or
 
-yarn add @{{scope}}/{{fileName}} --registry=https://artifacts.iflytek.com/artifactory/api/npm/npm-repo/
+yarn add @{{scope}}/{{fileName}}
 \`\`\`
 
 ## Usage
