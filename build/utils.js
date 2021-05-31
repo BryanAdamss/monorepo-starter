@@ -81,15 +81,10 @@ export const getAllModules = (root) =>
  * @param {String} str 字符串
  * @returns 转后后的字符串
  * @example
- * transform2PascalCase('@ba/utils')
- * => BaUtils
+ * transform2PascalCase('@ba/svg-assets')
+ * => BaSvgAssets
  */
-export const transform2PascalCase = str =>
-  str.replace(/@/g, '')
-    .split('/')
-    .filter(token => !!token)
-    .map(token => token.charAt(0).toUpperCase() + token.substring(1))
-    .join('')
+export const transform2PascalCase = str => str.replace(/[@/-]+(\w)/g, (m, g1) => g1.toUpperCase())
 
 /**
 * 生成全局对象
