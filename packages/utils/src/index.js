@@ -12,5 +12,5 @@
  * @return {string} 欢迎信息
  */
 export function print(msg) {
-  return `Hello ${msg}`
+  return `Hello ${msg} from monorepo-starter`
 }
