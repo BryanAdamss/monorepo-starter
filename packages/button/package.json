@@ -1,7 +1,7 @@
 {
   "name": "@ba/button",
   "_pkgType": "comp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A vue button component",
   "author": {
     "name": "GuangHui",
@@ -40,6 +40,6 @@
     "url": "https://github.com/BryanAdamss/monorepo-starter/issues"
   },
   "dependencies": {
-    "@ba/utils": "^1.1.0"
+    "@ba/utils": "^1.1.1"
   }
 }
