@@ -32,6 +32,7 @@ const fileName = process.argv[2]
 const chineseName = process.argv[3] || fileName
 const pkgType = process.argv[4] || 'comp'
 const compName = uppercamelcase(fileName)
+const debug = !!process.argv[5]
 
 const params = {
   scope,
@@ -51,6 +52,6 @@ Object.entries(tplMap).forEach(([key, { tpl, params, name }]) => {
     .end(eol)
 })
 
-updateCompJson(fileName, 'comp')
+!debug && updateCompJson(fileName, 'comp')
 
 log('DONE!')
