@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
-    "build": "lerna run build --parallel",
+    "build": "lerna run build --parallel --since",
     "commit": "git-cz",
     "predev": "yarn doc:lib",
     "dev:comp": "start-storybook -p 7007 -s public --no-manager-cache",
@@ -20,7 +20,7 @@
     "dev:svg": "node build/bin/dev-svg.js",
     "dev": "concurrently --raw \"yarn dev:comp\" \"yarn dev:lib\" \"yarn dev:svg\"",
     "doc:comp": "build-storybook -s public -o ./docs-static",
-    "doc:lib": "lerna run jsdoc2mdx --parallel",
+    "doc:lib": "lerna run jsdoc2mdx --parallel --since",
     "doc": "yarn doc:lib && yarn doc:comp",
     "test": "jest --config test/unit/jest.config.js --coverage",
     "new": "node build/bin/new.js",
