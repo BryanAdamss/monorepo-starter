@@ -18,6 +18,11 @@ const assets = (params) => ({
     tpl: require('./assets-pkg'),
     params,
     name: './package.json'
+  },
+  mdx: {
+    tpl: require('./assets-mdx'),
+    params,
+    name: `./stories/${params.fileName}.stories.mdx`
   }
 })
 
