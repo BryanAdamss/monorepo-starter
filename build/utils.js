@@ -8,9 +8,9 @@ import path from 'path'
 import babel from 'rollup-plugin-babel'
 import banner from 'rollup-plugin-banner'
 import commonjs from 'rollup-plugin-commonjs'
-import css from 'rollup-plugin-css-only'
 import img from 'rollup-plugin-img'
 import nodeResolve from 'rollup-plugin-node-resolve'
+import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import vue from 'rollup-plugin-vue'
 
@@ -199,14 +199,17 @@ export const genVueConf = ({ format, file, isModern, external, globals, INPUT_FI
       output: 'dist', // default the root
       extensions: /\.(png|jpg|jpeg)$/, // support png|jpg|jpeg|gif|svg, and it's alse the default value
       limit: 8192, // default 8192(8k)
-      _slash: true
+      _slash: true // 使用相对路径
       // exclude: 'node_modules/**'
     }),
     vue({
-      css: false, // 不内联css，提取css并使用rollup-plugin-css-only处理css；https://rollup-plugin-vue.vuejs.org/migrating.html
+      css: false, // 不内联css，提取css并使用rollup-plugin-css-only处理css；https://rollup-plugin-vue.vuejs.org/migrating.html;弃用rollup-plugin-css-only(不支持压缩)，改用postcss
       compileTemplate: true // 使用把template编译为render函数
     }),
-    css({ output: 'index.css' }),
+    postcss({
+      extract: path.join('index.css'),
+      minimize: true
+    }),
     banner(getBanner()),
     terser(getTerserOptions())
   ]
