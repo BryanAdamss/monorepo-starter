@@ -5,6 +5,8 @@
 
 @charset "UTF-8";
 
+@use "sass:math";
+
 // 导入调色板
 @import './_color-palette';
 
@@ -43,8 +45,8 @@ $fonts: (
 // ------------------------------------------
 $space-base: 16px !default;
 $space-none: 0 !default;
-$space-tiny: $space-base / 4 !default;
-$space-small: $space-base / 2 !default;
+$space-tiny: math.div($space-base, 4) !default;
+$space-small: math.div($space-base, 2) !default;
 $space-large: $space-base * 1.5 !default;
 $space-huge: $space-base * 3 !default;
 
