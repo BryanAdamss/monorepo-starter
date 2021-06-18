@@ -22,7 +22,7 @@ if (isDuplicate(process.argv[2])) {
 const path = require('path')
 const fileSave = require('file-save')
 const uppercamelcase = require('uppercamelcase')
-const { scope, prefix, packagesDirName } = require('../../project.config')
+const { scope, prefix, pkgsDir } = require('../../project.config')
 const render = require('json-templater/string')
 const eol = require('os').EOL
 
@@ -42,12 +42,12 @@ const params = {
   compName
 }
 
-const packagePath = path.join(__dirname, `../../${packagesDirName}`, fileName)
+const pkgPath = path.join(pkgsDir, fileName)
 
 const tplMap = getTplMap(pkgType, params)
 
 Object.entries(tplMap).forEach(([key, { tpl, params, name }]) => {
-  fileSave(path.join(packagePath, name))
+  fileSave(path.join(pkgPath, name))
     .write(render(tpl, params))
     .end(eol)
 })

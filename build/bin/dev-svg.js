@@ -3,22 +3,20 @@
  * @description 开发环境监听svg变化
  */
 
-const { join } = require('path')
 const chokidar = require('chokidar')
 const { execSync } = require('child_process')
 const {
-  svgPkgName,
-  publicDirName,
-  packagesDirName
+  publicDir,
+  svgPkgDir
 } = require('../../project.config')
 const { log } = require('../shared/tool')
 
 function execCopySvgs(changedPath, stats) {
-  log(`${changedPath} changed`)
+  log(`execCopySvgs: ${changedPath} changed`)
 
   try {
     execSync('yarn copy:svgs', {
-      cwd: join(packagesDirName, svgPkgName)
+      cwd: svgPkgDir
     })
   } catch (error) {
     log('execSync(\'yarn copy:svgs\')失败')
@@ -26,7 +24,7 @@ function execCopySvgs(changedPath, stats) {
 }
 
 const watcher = chokidar
-  .watch(`${publicDirName}/svgs/**/*.svg`, {
+  .watch(`${publicDir}/svgs/**/*.svg`, {
     persistent: true,
     awaitWriteFinish: {
       stabilityThreshold: 300

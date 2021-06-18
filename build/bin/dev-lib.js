@@ -6,17 +6,17 @@
 const path = require('path')
 const chokidar = require('chokidar')
 const { execSync } = require('child_process')
-const { packagesDirName } = require('../../project.config')
+const { pkgsDirName } = require('../../project.config')
 const { log } = require('../shared/tool')
 const compsMap = require('../../components.json')
 
 function execJsDoc2mdx(changedPath) {
-  log(`${changedPath} changed`)
+  log(`execJsDoc2mdx: ${changedPath} changed`)
 
   const { dir } = path.parse(changedPath)
   const [packagesDir, pkgName] = dir.split(path.sep).slice(0, 2)
 
-  if (packagesDir !== packagesDirName || !pkgName) return
+  if (packagesDir !== pkgsDirName || !pkgName) return
 
   try {
     execSync('yarn jsdoc2mdx', {
