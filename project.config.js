@@ -15,7 +15,7 @@ const pkgsDir = join(rootDir, PKGS_DIR_NAME)
 const svgPkgDir = join(rootDir, PKGS_DIR_NAME, SVG_PKG_NAME) // svg-assets包目录
 const publicDir = join(rootDir, PUBLIC_DIR_NAME)
 
-const componentsJson = join(rootDir, COMP_JSON_NAME) // componentsJson 文件地址
+const compsJsonDir = join(rootDir, COMP_JSON_NAME) // componentsJson 地址
 
 module.exports = {
   title: 'MONOREPO-STARTER', // 标题
@@ -28,5 +28,5 @@ module.exports = {
   pkgsDirName: PKGS_DIR_NAME,
   publicDir,
   publicDirName: PUBLIC_DIR_NAME,
-  componentsJson
+  compsJsonDir
 }

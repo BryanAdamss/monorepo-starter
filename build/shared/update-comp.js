@@ -7,15 +7,15 @@ const fs = require('fs')
 const fileSave = require('file-save')
 const { stringify } = require('./tool')
 const {
-  componentsJson,
+  compsJsonDir,
   pkgsDirName
 } = require('../../project.config')
 
 function updateCompJson(fileName, type) {
   const path = `./${pkgsDirName}/${fileName}`
 
-  if (!fs.existsSync(componentsJson)) {
-    fileSave(componentsJson)
+  if (!fs.existsSync(compsJsonDir)) {
+    fileSave(compsJsonDir)
       .write(
         stringify({
           [fileName]: {
@@ -25,19 +25,19 @@ function updateCompJson(fileName, type) {
         })
       )
   } else {
-    const comp = require(componentsJson)
+    const comp = require(compsJsonDir)
 
     comp[fileName] = { type, path }
 
-    fileSave(componentsJson)
+    fileSave(compsJsonDir)
       .write(stringify(comp))
   }
 }
 
 function isDuplicate(fileName) {
-  if (!fs.existsSync(componentsJson)) return false
+  if (!fs.existsSync(compsJsonDir)) return false
 
-  const comp = require(componentsJson)
+  const comp = require(compsJsonDir)
 
   return !!comp && !!comp[fileName]
 }
