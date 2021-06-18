@@ -4,6 +4,8 @@
  */
 
 module.exports = {
+  title: 'MONOREPO-STARTER', // 标题
+  repository: 'https://github.com/BryanAdamss/monorepo-starter', // 仓库
   scope: 'ba', // @ba/button @ba/utils
   prefix: 'Ba', // 组件名前缀 BaButton BaUtils
   svgPkgName: 'svg-assets', // svg包名

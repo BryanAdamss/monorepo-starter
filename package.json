@@ -108,6 +108,13 @@
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BryanAdamss/monorepo-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BryanAdamss/monorepo-starter/issues"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

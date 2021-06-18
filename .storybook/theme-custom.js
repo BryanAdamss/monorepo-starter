@@ -5,9 +5,11 @@
 
 import { create } from '@storybook/theming'
 
+import { title, repository } from '../project.config'
+
 export default create({
   base: 'light',
 
-  brandTitle: 'MONOREPO-STARTER',
-  brandUrl: 'https://github.com/BryanAdamss/monorepo-starter'
+  brandTitle: title,
+  brandUrl: repository
 })
