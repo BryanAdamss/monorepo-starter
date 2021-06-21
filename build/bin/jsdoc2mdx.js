@@ -6,12 +6,11 @@
 const fs = require('fs')
 const path = require('path')
 const eol = require('os').EOL
-const prettier = require('prettier')
 const fileSave = require('file-save')
 const jsdoc2md = require('jsdoc-to-markdown')
 const render = require('json-templater/string')
 const { scope } = require('../../project.config')
-const { log } = require('../shared/tool')
+const { log, prettierMdx } = require('../shared/tool')
 
 const { TPL_STORIES_MDX_LIB } = require('../template')
 
@@ -32,19 +31,9 @@ function getJsdoc2mdContent() {
   return jsdoc2md.renderSync({ data: templateData })
 }
 
-function formatMDX(content) {
-  return prettier.format(content, {
-    tabWidth: 2,
-    semi: false,
-    singleQuote: true,
-    trailingComma: 'none',
-    parser: 'mdx'
-  })
-}
-
 function save(content) {
   fileSave(outputFile)
-    .write(formatMDX(content))
+    .write(prettierMdx(content))
 }
 
 function create() {

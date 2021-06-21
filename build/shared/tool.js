@@ -2,7 +2,7 @@
  * @author GuangHui
  * @description 工具方法
  */
-
+const prettier = require('prettier')
 const { scope } = require('../../project.config')
 
 const log = console.log.bind(console)
@@ -32,10 +32,28 @@ function transform2PascalCase(str) {
   return str.replace(/[@/-]+(\w)/g, (m, g1) => g1.toUpperCase())
 }
 
+function prettierWithParser(content, parser = 'babel') {
+  return prettier.format(content, {
+    tabWidth: 2,
+    semi: false,
+    singleQuote: true,
+    trailingComma: 'none',
+    parser
+  })
+}
+
+const prettierMdx = content => prettierWithParser(content, 'mdx')
+const prettierMd = content => prettierWithParser(content, 'markdown')
+const prettierJson = content => prettierWithParser(content, 'json')
+
 module.exports = {
   log: msg => log(`------- ${msg} -------`),
   parse,
   stringify: arg => stringify(arg, null, 2),
   getFileNameFromPkgName,
-  transform2PascalCase
+  transform2PascalCase,
+  prettierWithParser,
+  prettierMdx,
+  prettierMd,
+  prettierJson
 }
