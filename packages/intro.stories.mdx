@@ -1,66 +1,88 @@
 <!-- args定义参考:https://storybook.js.org/docs/vue/writing-stories/args -->
 <!-- argTypes定义参考:https://storybook.js.org/docs/react/essentials/controls#annotation -->
 
-import {
-  Meta,
-  Canvas,
-  Story,
-  ArgsTable,
-  Description
-} from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import { linkTo } from '@storybook/addon-links'
 
 <Meta
-  title="intro"
+  title="Intro"
   parameters={{ previewTabs: { canvas: { hidden: true } }, docsOnly: true }}
 />
 
-# monorepo-starter
+# MONOREPO-STARTER
 
-A monorepo starter for UI components develop. Use lerna,yarn workspaces, rollup, storybook etc.
+> monorepo-starter 是一个 monorepo 模板工程，提供基于 storybook-vue 的 UI 开发体验；
 
-## Install
+主要对外提供下面几种`npm包`
+
+- `vue组件包`
+  - 基于作业业务开发，适用于`vue@^2.6.12`
+  - `type为comp`
+- `js类库包`
+  - 常用工具方法等
+  - `type为lib`
+- `资源包`
+  - `svg`、`缺省图`等等资源
+  - `type为assets`
+
+## 如何查询？
+
+### 方法一：查看当前页 npm 包列表
+
+我们维护了一个包列表，具体可查看[包列表](#npm-package-list)
+
+## 如何安装？
+
+`monorepo starter` 的包全部以`@ba`做为`scope`，发布到了`npm 源`上。
+可以通过设置`npm 源`的方式安装。
+
+### 方法一：全局切到 npm 源安装
+
+> 适用于所有包都来自 npm 源的项目
 
 ```bash
+npm config set registry https://registry.npmjs.org/
 npm i @ba/xxx
-
-or
-
-yarn add @ba/xxx
-
 ```
 
-## NPM
+### 方法二：单独指定到 npm 源进行安装
 
-- [vue-cli-plugin-auto-alias](https://www.npmjs.com/package/vue-cli-plugin-auto-alias)
-- [@bryanadamss/drawing-board](https://www.npmjs.com/package/@bryanadamss/drawing-board)
-- [@bryanadamss/num2chn](https://www.npmjs.com/package/@bryanadamss/num2chn)
-- [ant-color-converter](https://www.npmjs.com/package/ant-color-converter)
+> 适用于同时需要使用 npm 源、三方源安装包的项目
 
-## Show your support
+```bash
+npm i @ba/xxx --registry=https://registry.npmjs.org/
+```
 
-Give a ⭐️ if this project helped you!
+### 方法三：指定具体地址安装（推荐）
 
-## 📝 License
+> 手动声明包解析地址（替换下面例子中的 `package-name` 和`版本号`）；此方法会固定包的版本，若要升级需要手动调整版本号；
 
-Copyright © 2020 [BryanAdamss@foxmail.com](https://github.com/BryanAdamss).<br />
-This project is [MIT](https://github.com/kefranabg/readme-md-generator/blob/master/LICENSE) licensed.
+```json
 
-## Contributors ✨
+// 第一步，在packages.json中指定包和具体版本
+{
+  "dependencies": {
+    "@ba/package-name": "https://registry.npmjs.org/@ba/package-name/download/@ba/package-name-0.11.3.tgz"
+  }
+}
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+// 第二部，安装
+npm i
+```
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://bryanadamss.github.io/"><img src="https://avatars3.githubusercontent.com/u/7441504?v=4" width="64px;" alt=""/><br /><sub><b>GuangHui</b></sub></a><br /><a href="#projectManagement-BryanAdamss" title="Project Management">📆</a></td>
-  </tr>
-</table>
+## npm package list
 
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
+| 包                          | 描述     | 类型       | 版本     | 文档                                                |
+| --------------------------- | -------- | ---------- | -------- | --------------------------------------------------- |
+| <code>@ba/button</code>     | `comp`   | 按钮       | `v1.1.1` | <a onClick={linkTo('Components/BaButton')}>jump</a> |
+| <code>@ba/hello</code>      | `lib`    | 问候       | `v1.1.1` | [jump](?path=/story/libs-bahello--page)             |
+| <code>@ba/svg-assets</code> | `assets` | svg 资源包 | `v1.1.0` | [jump](?path=/story/assets-basvgassets--page)       |
+| <code>@ba/utils</code>      | `lib`    | 工具方法   | `v1.1.1` | [jump](?path=/story/libs-bautils--page)             |
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+## 贡献者
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+### 名单
+
+| 账号          | 主页                                                             |
+| ------------- | ---------------------------------------------------------------- |
+| `BryanAdamss` | [https://github.com/BryanAdamss](https://github.com/BryanAdamss) |

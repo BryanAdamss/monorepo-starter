@@ -1,12 +1,12 @@
 /**
  * @author GuangHui
- * @description 更新组件映射表components.json
+ * @description 更新组件映射表components.json相关方法
  */
 
 const fs = require('fs')
 const fileSave = require('file-save')
 const { getPackagesSync } = require('@lerna/project')
-const { stringify, log, getFileNameFromPkgName } = require('./tool')
+const { stringify, log, getFileNameFromPkgName, prettierJson } = require('./tool')
 const { join } = require('path')
 const {
   compsJsonDir,
@@ -21,14 +21,16 @@ function addOrUpdateCompsJson(fileName, type, chineseName) {
   if (!fs.existsSync(compsJsonDir)) {
     fileSave(compsJsonDir)
       .write(
-        stringify({
-          [fileName]: {
-            type,
-            path,
-            cnName: chineseName,
-            version: '1.0.0' // 初始版本1.0.0
-          }
-        })
+        prettierJson(
+          stringify({
+            [fileName]: {
+              type,
+              path,
+              cnName: chineseName,
+              version: '1.0.0' // 初始版本1.0.0
+            }
+          })
+        )
       )
   } else {
     const compsJson = require(compsJsonDir)
@@ -39,7 +41,11 @@ function addOrUpdateCompsJson(fileName, type, chineseName) {
     compsJson[fileName].cnName = chineseName
 
     fileSave(compsJsonDir)
-      .write(stringify(compsJson))
+      .write(
+        prettierJson(
+          stringify(compsJson)
+        )
+      )
   }
 }
 
@@ -76,7 +82,11 @@ function updateVersions() {
     })
 
   fileSave(compsJsonDir)
-    .write(stringify(compsJson))
+    .write(
+      prettierJson(
+        stringify(compsJson)
+      )
+    )
 }
 
 module.exports = {
