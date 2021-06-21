@@ -17,7 +17,7 @@ import {{prefix}}{{compName}} from '../src/{{fileName}}.vue'
 
 <!-- 设置 meta 信息 -->
 
-<Meta title="Components/HwUti665" component={HwUti665} argTypes={{ TODO }} />
+<Meta title="Components/{{prefix}}{{compName}}" component={{{prefix}}{{compName}}} argTypes={{ TODO }} />
 
 <!-- 创建容器组件 -->
 

@@ -6,7 +6,7 @@
 module.exports = `import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
-  title="Libs/{{fileName}}"
+  title="Libs/{{prefix}}{{compName}}"
   parameters={{ previewTabs: { canvas: { hidden: true } },docsOnly:true }}
 />
 
