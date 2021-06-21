@@ -49,4 +49,6 @@ watcher
       .on('add', execJsDoc2mdx)
       .on('change', execJsDoc2mdx)
       .on('unlink', execJsDoc2mdx)
+
+    log('exec dev:lib SUCCESS!')
   })

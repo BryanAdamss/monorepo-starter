@@ -78,3 +78,5 @@ if (!fs.existsSync(outputDir)) {
     create()
   }
 }
+
+log(`${LERNA_PACKAGE_NAME} exec jsdoc2md DONE!`)
