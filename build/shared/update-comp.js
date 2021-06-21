@@ -15,7 +15,7 @@ const {
   pkgsDir
 } = require('../../project.config')
 
-function addOrUpdateCompsJson(fileName, type) {
+function addOrUpdateCompsJson(fileName, type, chineseName) {
   const path = `./${pkgsDirName}/${fileName}`
 
   if (!fs.existsSync(compsJsonDir)) {
@@ -25,6 +25,7 @@ function addOrUpdateCompsJson(fileName, type) {
           [fileName]: {
             type,
             path,
+            cnName: chineseName,
             version: '1.0.0' // 初始版本1.0.0
           }
         })
@@ -35,6 +36,7 @@ function addOrUpdateCompsJson(fileName, type) {
     // version字段，在postversion钩子中更新
     compsJson[fileName].type = type
     compsJson[fileName].path = path
+    compsJson[fileName].cnName = chineseName
 
     fileSave(compsJsonDir)
       .write(stringify(compsJson))
