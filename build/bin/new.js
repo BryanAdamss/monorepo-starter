@@ -52,6 +52,6 @@ Object.entries(tplMap).forEach(([key, { tpl, params, name }]) => {
     .end(eol)
 })
 
-!debug && updateCompJson(fileName, 'comp')
+!debug && updateCompJson(fileName, pkgType)
 
 log('DONE!')
