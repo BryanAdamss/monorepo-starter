@@ -1,6 +1,6 @@
 # `@ba/hello`
 
-> TODO: description
+> 问候
 
 ## Usage
 

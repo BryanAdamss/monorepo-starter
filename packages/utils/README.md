@@ -1,11 +1,21 @@
 # `@ba/utils`
 
-> TODO: description
+> 工具方法
 
-## Usage
+## Prepare
 
+- `vue@^2.6.12`
+
+## Install
+
+```bash
+ npm i @ba/utils
+
+ or
+
+ yarn add @ba/utils
 ```
-const utils = require('@ba/utils');
 
-// TODO: DEMONSTRATE API
-```
+## API
+
+For more information see the [Document reference](TODO:document link).
