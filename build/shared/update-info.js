@@ -25,7 +25,6 @@ function genMdCompTable(withLink) {
   const cont = Object.entries(require(compsJsonDir))
     .map(
       ([fileName, { type, version, cnName }]) => {
-        console.log(fileName, type, version)
         const pkgName = `@${scope}/${fileName}`
 
         const row = `| <code>${pkgName}</code> | \`${type}\` | ${cnName} | \`v${version}\` |`
