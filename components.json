@@ -1,18 +1,22 @@
 {
   "button": {
     "type": "comp",
-    "path": "./packages/button"
+    "path": "./packages/button",
+    "version": "1.1.1"
   },
   "hello": {
     "type": "lib",
-    "path": "./packages/hello"
+    "path": "./packages/hello",
+    "version": "1.1.1"
   },
   "svg-assets": {
     "type": "assets",
-    "path": "./packages/svg-assets"
+    "path": "./packages/svg-assets",
+    "version": "1.1.0"
   },
   "utils": {
     "type": "lib",
-    "path": "./packages/utils"
+    "path": "./packages/utils",
+    "version": "1.1.1"
   }
 }

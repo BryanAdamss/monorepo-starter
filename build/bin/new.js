@@ -5,7 +5,7 @@
 
 const { log } = require('../shared/tool')
 const {
-  updateCompJson,
+  addOrUpdateCompsJson,
   isDuplicate
 } = require('../shared/update-comp')
 
@@ -52,6 +52,6 @@ Object.entries(tplMap).forEach(([key, { tpl, params, name }]) => {
     .end(eol)
 })
 
-!debug && updateCompJson(fileName, pkgType)
+!debug && addOrUpdateCompsJson(fileName, pkgType)
 
 log('DONE!')

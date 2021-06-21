@@ -1,17 +1,21 @@
 /**
  * @author GuangHui
- * @description 更新组件映射表
+ * @description 更新组件映射表components.json
  */
 
 const fs = require('fs')
 const fileSave = require('file-save')
-const { stringify } = require('./tool')
+const { getPackagesSync } = require('@lerna/project')
+const { stringify, log, getFileNameFromPkgName } = require('./tool')
+const { join } = require('path')
 const {
   compsJsonDir,
-  pkgsDirName
+  pkgsDirName,
+  rootDir,
+  pkgsDir
 } = require('../../project.config')
 
-function updateCompJson(fileName, type) {
+function addOrUpdateCompsJson(fileName, type) {
   const path = `./${pkgsDirName}/${fileName}`
 
   if (!fs.existsSync(compsJsonDir)) {
@@ -20,17 +24,20 @@ function updateCompJson(fileName, type) {
         stringify({
           [fileName]: {
             type,
-            path
+            path,
+            version: '1.0.0' // 初始版本1.0.0
           }
         })
       )
   } else {
-    const comp = require(compsJsonDir)
+    const compsJson = require(compsJsonDir)
 
-    comp[fileName] = { type, path }
+    // version字段，在postversion钩子中更新
+    compsJson[fileName].type = type
+    compsJson[fileName].path = path
 
     fileSave(compsJsonDir)
-      .write(stringify(comp))
+      .write(stringify(compsJson))
   }
 }
 
@@ -42,7 +49,36 @@ function isDuplicate(fileName) {
   return !!comp && !!comp[fileName]
 }
 
+function updateVersions() {
+  const compsJson = require(compsJsonDir)
+  if (!compsJson) {
+    log('components.json 不存在')
+    return
+  }
+
+  const pkgs = getPackagesSync(rootDir)
+
+  if (!pkgs || !pkgs.length) {
+    log('没有读取到任何package')
+    return
+  }
+
+  pkgs
+    .map(pkg => pkg.name)
+    .map(getFileNameFromPkgName)// 提取fileName
+    .filter(fileName => !!compsJson[fileName]) // 过滤
+    .forEach(fileName => {
+      const { version } = require(join(pkgsDir, fileName, 'package.json'))
+
+      version && (compsJson[fileName].version = version)
+    })
+
+  fileSave(compsJsonDir)
+    .write(stringify(compsJson))
+}
+
 module.exports = {
-  updateCompJson,
+  addOrUpdateCompsJson,
+  updateVersions,
   isDuplicate
 }

@@ -29,7 +29,8 @@
     "new": "node build/bin/new.js",
     "pkgs": "lerna ls -pla",
     "pkgs:deps": "lerna ls --graph",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "postversion": "node build/bin/post-version.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.13",
