@@ -14,6 +14,8 @@ import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import vue from 'rollup-plugin-vue'
 
+import { transform2PascalCase } from './shared/tool'
+
 /**
  * 出口字段
  */
@@ -76,16 +78,6 @@ export function getFormats(pkg) {
   */
 export const getAllModules = (root) =>
   getPackagesSync(root).map(pkg => pkg.name)
-
-/**
- * 转换为PascalCase格式
- * @param {String} str 字符串
- * @returns 转后后的字符串
- * @example
- * transform2PascalCase('@ba/svg-assets')
- * => BaSvgAssets
- */
-export const transform2PascalCase = str => str.replace(/[@/-]+(\w)/g, (m, g1) => g1.toUpperCase())
 
 /**
 * 生成全局对象
