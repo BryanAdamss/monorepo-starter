@@ -12,7 +12,7 @@ const render = require('json-templater/string')
 const { scope } = require('../../project.config')
 const { log, prettierMdx } = require('../shared/tool')
 
-const { TPL_STORIES_MDX_LIB } = require('../template')
+const libMdxTpl = require('../template/lib-mdx')
 
 const { LERNA_PACKAGE_NAME } = process.env
 
@@ -41,7 +41,7 @@ function create() {
 
   save(
     render(
-      TPL_STORIES_MDX_LIB,
+      libMdxTpl,
       {
         scope,
         fileName,
