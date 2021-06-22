@@ -1,13 +1,16 @@
 /**
  * @author GuangHui
- * @description assets mdx模板
+ * @description assets mdx模板(svg)
  */
 
-module.exports = `import { Meta } from '@storybook/addon-docs/blocks';
+module.exports = `import { Meta } from '@storybook/addon-docs/blocks'
+import svgList from '../src'
+
+import SvgTable from './svg-table'
 
 <Meta
   title="Assets/{{prefix}}{{compName}}"
-  parameters={{ previewTabs: { canvas: { hidden: true } },docsOnly:true }}
+  parameters={{ previewTabs: { canvas: { hidden: true } }, docsOnly: true }}
 />
 
 # @{{scope}}/{{fileName}}
@@ -35,4 +38,7 @@ import goTopSvg from '@{{scope}}/{{fileName}}/assets/go-top.svg'
 const requireAll = (requireContext) => requireContext.keys().map(requireContext)
 requireAll(require.context('@{{scope}}/{{fileName}}/assets', false, /\\.svg$/))
 \`\`\`
-`
+
+## List
+
+<SvgTable />`
