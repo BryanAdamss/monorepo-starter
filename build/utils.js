@@ -14,12 +14,22 @@ import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import vue from 'rollup-plugin-vue'
 
-import { transform2PascalCase } from './shared/tool'
-
 /**
  * 出口字段
  */
 export const PKG_FIELDS = ['main', 'exports', 'module', 'browser', 'unpkg']
+
+/**
+ * 转换为PascalCase格式
+ * @param {String} str 字符串
+ * @returns 转后后的字符串
+ * @example
+ * transform2PascalCase('@hw/svg-assets')
+ * => HwSvgAssets
+ */
+function transform2PascalCase(str) {
+  return str.replace(/[@/-]+(\w)/g, (m, g1) => g1.toUpperCase())
+}
 
 /**
  * 生成formats数组
