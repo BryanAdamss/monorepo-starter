@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import svgList from '../src'
+import GoTop from '../assets/go-top.svg'
+
+import SvgTable from './svg-table'
+
+<Meta
+  title="Assets/HwSvgAssets"
+  parameters={{ previewTabs: { canvas: { hidden: true } }, docsOnly: true }}
+/>
+
+# @hw/svg-assets
+
+## Install
+
+```bash
+npm i @hw/svg-assets --registry=https://artifacts.iflytek.com/artifactory/api/npm/npm-repo/
+
+or
+
+yarn add @hw/svg-assets --registry=https://artifacts.iflytek.com/artifactory/api/npm/npm-repo/
+```
+
+## Usage
+
+```js
+// 获取所有资源列表
+import AssetsList from '@hw/svg-assets'
+
+// 导入部分资源(以 svg 示例)
+import goTopSvg from '@hw/svg-assets/assets/go-top.svg'
+
+// 批量导入
+const requireAll = (requireContext) => requireContext.keys().map(requireContext)
+requireAll(require.context('@hw/svg-assets/assets', false, /\\.svg$/))
+```
+
+## List
+
+<SvgTable />
