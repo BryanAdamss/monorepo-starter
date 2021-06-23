@@ -8,6 +8,7 @@ const { scope } = require('../project.config')
 
 module.exports = {
   stories: [
+    '../packages/intro.stories.mdx', // 默认渲染intro页
     '../packages/**/*.stories.mdx',
     '../packages/**/*.stories.@(js|jsx|ts|tsx)'
   ],
