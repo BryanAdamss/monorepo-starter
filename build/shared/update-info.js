@@ -38,9 +38,9 @@ function genMdCompTable(withLink) {
     .join(eol)
 
   const head = withLink
-    ? `| 包  | 描述 | 类型 | 版本 | 文档 |
+    ? `| 包  | 类型 | 描述 | 版本 | 文档 |
     | --- | ---- | ---- | ---- | ---- |`
-    : `| 包  | 描述 | 类型 | 版本 |
+    : `| 包  | 类型 | 描述 | 版本 |
     | --- | ---- | ---- | ---- |`
 
   return `${head}${eol}${cont}`
