@@ -22,7 +22,7 @@ if (isDuplicate(process.argv[2])) {
 const path = require('path')
 const fileSave = require('file-save')
 const uppercamelcase = require('uppercamelcase')
-const { scope, prefix, pkgsDir } = require('../../project.config')
+const { scope, prefix, pkgsDir, publishDir, mdxCategoryMap } = require('../../project.config')
 const render = require('json-templater/string')
 const eol = require('os').EOL
 
@@ -39,7 +39,8 @@ const params = {
   prefix,
   fileName,
   chineseName,
-  compName
+  compName,
+  docPath: `${publishDir}/?path=/docs/${mdxCategoryMap[pkgType].toLowerCase()}-${scope + fileName.replace(/-/g, '').toLowerCase()})`
 }
 
 const pkgPath = path.join(pkgsDir, fileName)

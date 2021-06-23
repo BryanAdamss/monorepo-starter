@@ -29,6 +29,4 @@ import {{prefix}}{{compName}} from '@{{scope}}/{{fileName}}'
 
 ## API
 
-For more information see the [Document reference](TODO:document link).
-
-`
+For more information see the [Document reference]({{docPath}}).`

@@ -10,6 +10,7 @@ const SVG_PKG_NAME = 'svg-assets' // svg包名
 const COMP_JSON_NAME = 'components.json' // 组件映射表名
 const INTRO_MDX_NAME = 'intro.stories.mdx' // intro文件名
 const README_NAME = 'README.md' // readme
+const PUBLISH_DIR = '.' // 静态站点目录
 
 // mdx目录映射表
 const MDX_CATEGORY_MAP = {
@@ -44,5 +45,6 @@ module.exports = {
   rootReadmeDir,
   readmeName: README_NAME,
   compsJsonDir,
-  mdxCategoryMap: MDX_CATEGORY_MAP
+  mdxCategoryMap: MDX_CATEGORY_MAP,
+  publishDir: PUBLISH_DIR
 }

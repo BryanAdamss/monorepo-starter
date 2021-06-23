@@ -32,7 +32,7 @@ function genMdCompTable(withLink) {
 
         const link = type === 'comp'
           ? `<a onClick={linkTo('${mdxCategoryMap[type]}/${transform2PascalCase(pkgName)}')}>jump</a> |` // comp需要借助storybook addons-link完成跳转
-          : `[jump](?path=/story/${mdxCategoryMap[type].toLowerCase()}-${scope + fileName.replace(/-/g, '').toLowerCase()}--page)` // lib、assets类型直接跳转对应页面；例如http://localhost:7007/?path=/story/libs-hwmathquillwrapper--page
+          : `[jump](?path=/story/${mdxCategoryMap[type].toLowerCase()}-${scope + fileName.replace(/-/g, '').toLowerCase()})` // lib、assets类型直接跳转对应页面；例如http://localhost:7007/?path=/story/libs-hwmathquillwrapper--page
         return row + link
       })
     .join(eol)
