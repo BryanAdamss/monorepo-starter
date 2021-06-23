@@ -3185,6 +3185,11 @@
   dependencies:
     core-js "^3.8.2"
 
+"@storybook/preset-scss@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.nlark.com/@storybook/preset-scss/download/@storybook/preset-scss-1.0.3.tgz#8ac834545c642dada0f64f510ef08dfb882e9737"
+  integrity sha1-isg0VFxkLa2g9k9RDvCN+4gulzc=
+
 "@storybook/router@6.2.9":
   version "6.2.9"
   resolved "https://registry.nlark.com/@storybook/router/download/@storybook/router-6.2.9.tgz#547543031dd8330870bb6b473dcf7e51982e841c"

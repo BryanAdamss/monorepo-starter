@@ -48,6 +48,7 @@
     "@storybook/addon-links": "^6.2.9",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^6.2.9",
+    "@storybook/preset-scss": "^1.0.3",
     "@storybook/theming": "^6.2.9",
     "@storybook/vue": "^6.2.9",
     "@vue/eslint-config-prettier": "^6.0.0",

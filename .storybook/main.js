@@ -21,7 +21,8 @@ module.exports = {
     // 尝试在启动后，使用按键A、D来切换显示隐藏
     '@storybook/addon-essentials',
     // 用来压制DeprecationWarning: Relying on the implicit PostCSS loader is deprecated and will be removed in Storybook 7.0.If you need PostCSS, include '@storybook/addon-postcss' in your '.storybook/main.js' file.错误
-    '@storybook/addon-postcss'
+    '@storybook/addon-postcss',
+    '@storybook/preset-scss'
   ],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -29,11 +30,12 @@ module.exports = {
     // 'PRODUCTION' is used when building the static version of storybook.
 
     // Make whatever fine-grained changes you need
-    config.module.rules.push({
-      test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader']
-      // include: path.resolve(__dirname, '../')
-    })
+    // 改为直接使用@storybook/preset-scss
+    // config.module.rules.push({
+    //   test: /\.scss$/,
+    //   use: ['style-loader', 'css-loader', 'sass-loader']
+    //   // include: path.resolve(__dirname, '../')
+    // })
 
     // add svgo-loader、svg-sprite-loader
     config.module.rules.push({
