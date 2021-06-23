@@ -2,10 +2,26 @@
 
 > 按钮
 
+## Prepare
+
+- `vue@^2.6.12`
+
 ## Install
 
-```
-const button = require('@ba/button');
+```bash
+npm i @ba/button
 
-// TODO: DEMONSTRATE API
+or
+
+yarn add @ba/button
 ```
+
+## Usage
+
+```js
+import BaButton from '@ba/button'
+```
+
+## API
+
+For more information see the [Document reference](TODO:document link).

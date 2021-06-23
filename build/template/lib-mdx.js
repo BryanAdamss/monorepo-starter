@@ -25,7 +25,7 @@ yarn add @{{scope}}/{{fileName}}
 ## Usage
 
 \`\`\`js
-import { TODO } from '@{{scope}}/{{fileName}}'
+import {{prefix}}{{compName}} from '@{{scope}}/{{fileName}}'
 \`\`\`
 
 ## API

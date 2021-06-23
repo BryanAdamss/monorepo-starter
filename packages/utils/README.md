@@ -9,11 +9,17 @@
 ## Install
 
 ```bash
- npm i @ba/utils
+npm i @ba/utils
 
- or
+or
 
- yarn add @ba/utils
+yarn add @ba/utils
+```
+
+## Usage
+
+```js
+import BaUtils from '@ba/utils'
 ```
 
 ## API
