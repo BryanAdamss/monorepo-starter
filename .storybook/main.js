@@ -19,7 +19,9 @@ module.exports = {
     // @storybook/addon-essentials包含了action、controls面板
     // 如果不显示，可能是面板被隐藏了
     // 尝试在启动后，使用按键A、D来切换显示隐藏
-    '@storybook/addon-essentials'
+    '@storybook/addon-essentials',
+    // 用来压制DeprecationWarning: Relying on the implicit PostCSS loader is deprecated and will be removed in Storybook 7.0.If you need PostCSS, include '@storybook/addon-postcss' in your '.storybook/main.js' file.错误
+    '@storybook/addon-postcss'
   ],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
