@@ -3,3 +3,4 @@ lerna-debug.log
 yarn-error.log
 dist
 test/unit/coverage
+docs-static
