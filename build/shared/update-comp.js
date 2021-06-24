@@ -35,10 +35,19 @@ function addOrUpdateCompsJson(fileName, type, chineseName) {
   } else {
     const compsJson = require(compsJsonDir)
 
-    // version字段，在postversion钩子中更新
-    compsJson[fileName].type = type
-    compsJson[fileName].path = path
-    compsJson[fileName].cnName = chineseName
+    if (compsJson[fileName]) {
+      // version字段，在postversion钩子中更新
+      compsJson[fileName].type = type
+      compsJson[fileName].path = path
+      compsJson[fileName].cnName = chineseName
+    } else {
+      compsJson[fileName] = {
+        type,
+        path,
+        version: '1.0.0',
+        cnName: chineseName
+      }
+    }
 
     fileSave(compsJsonDir)
       .write(
