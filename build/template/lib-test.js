@@ -3,10 +3,10 @@
  * @description lib 单元测试模板
  */
 
-module.exports = `import { xxx } from '../src'
+module.exports = `import {{prefix}}{{compName}} from '../src'
 
-describe('xxx', () => {
+describe('{{prefix}}{{compName}}', () => {
   it('should be a function', () => {
-    expect(typeof xxx === 'function').toBe(true)
+    expect(typeof {{prefix}}{{compName}} === 'function').toBe(true)
   })
 })`
