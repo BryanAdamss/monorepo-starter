@@ -42,7 +42,7 @@ const params = {
   fileName,
   chineseName,
   compName,
-  docPath: `${publishDir}/?path=/docs/${mdxCategoryMap[pkgType].toLowerCase()}-${scope + fileName.replace(/-/g, '').toLowerCase()})`
+  docPath: `${publishDir}/?path=/docs/${mdxCategoryMap[pkgType].toLowerCase()}-${scope + fileName.replace(/-/g, '').toLowerCase()}`
 }
 
 const pkgPath = path.join(pkgsDir, fileName)
