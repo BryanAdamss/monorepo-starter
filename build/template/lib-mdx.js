@@ -12,6 +12,8 @@ module.exports = `import { Meta } from '@storybook/addon-docs/blocks';
 
 # @{{scope}}/{{fileName}}
 
+> {{chineseName}}
+
 ## Install
 
 \`\`\`bash
