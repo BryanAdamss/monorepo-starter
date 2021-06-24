@@ -29,7 +29,7 @@
     "new": "node build/bin/new.js",
     "pkgs": "lerna ls -pla",
     "pkgs:deps": "lerna ls --graph",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "yarn build:since",
     "postversion": "node build/bin/post-version.js"
   },
   "devDependencies": {
