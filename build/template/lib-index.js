@@ -16,6 +16,6 @@ module.exports = `/**
 * @param {string} msg 入参描述
 * @return {string} 返回描述
 */
-export function xxx(msg) {
-  return msg
+export default class {{compName}} {
+  constructor() {}
 }`
