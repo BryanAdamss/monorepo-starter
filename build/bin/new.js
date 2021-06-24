@@ -28,6 +28,8 @@ const eol = require('os').EOL
 
 const { getTplMap } = require('../template')
 
+const { updateRootMd, updateIntroMdx } = require('../shared/update-info')
+
 const fileName = process.argv[2]
 const chineseName = process.argv[3] || fileName
 const pkgType = process.argv[4] || 'comp'
@@ -54,5 +56,9 @@ Object.entries(tplMap).forEach(([key, { tpl, params, name }]) => {
 })
 
 !debug && addOrUpdateCompsJson(fileName, pkgType, chineseName)
+
+!debug && updateRootMd()
+
+!debug && updateIntroMdx()
 
 log('DONE!')
