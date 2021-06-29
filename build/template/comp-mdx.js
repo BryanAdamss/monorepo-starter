@@ -53,13 +53,45 @@ export const Template = (args, storyCtx) => ({
   }
 })
 
-# {{prefix}}{{compName}}
+# @{{scope}}/{{fileName}}
+
+> {{chineseName}}
 
 <!-- 读取组件描述 -->
 
 <Description of={{{prefix}}{{compName}}} />
 
-## primary
+## Install
+
+\`\`\`bash
+npm i @{{scope}}/{{fileName}} --registry=https://artifacts.iflytek.com/artifactory/api/npm/npm-repo/
+
+or
+
+yarn add @{{scope}}/{{fileName}} --registry=https://artifacts.iflytek.com/artifactory/api/npm/npm-repo/
+\`\`\`
+
+## Usage
+
+\`\`\`js
+import '@{{scope}}/{{fileName}}/dist/index.css' // TODO check if need?
+import {{prefix}}{{compName}} from '@{{scope}}/{{fileName}}'
+
+// 局部注册
+export default {
+  components: {
+    {{prefix}}{{compName}}
+  }
+}
+
+// 全局注册，main.js
+Vue.component({{prefix}}{{compName}})
+
+// 当作插件使用，main.js
+Vue.use({{prefix}}{{compName}})
+\`\`\`
+
+## Demo
 
 <Canvas>
   <Story name="primary" args={{ TODO }}>
@@ -67,11 +99,15 @@ export const Template = (args, storyCtx) => ({
   </Story>
 </Canvas>
 
+## ArgsTable
+
 <!-- 主 story，建议设置 ArgsTable -->
 
 <ArgsTable of={{{prefix}}{{compName}}} />
 
-## subStory
+## Guide
+
+### subStory
 
 <!-- 子 story -->
 
@@ -83,7 +119,7 @@ export const Template = (args, storyCtx) => ({
   </Story>
 </Canvas>
 
-## slotStory
+### slotStory
 
 <!-- 插槽 story -->
 

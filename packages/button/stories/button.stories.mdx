@@ -57,11 +57,45 @@ export const Template = (args, storyCtx) => ({
   }
 })
 
-# BaButton
+# @ba/button
+
+> 按钮
 
 <!-- 读取组件描述 -->
 
 <Description of={BaButton} />
+
+## Install
+
+```bash
+npm i @ba/button
+
+or
+
+yarn add @ba/button
+```
+
+## Usage
+
+```js
+import '@hw/button/dist/index.css'
+import BaButton from '@ba/button'
+
+// 局部注册
+export default {
+  components: {
+    BaButton
+  }
+}
+
+// 全局注册，main.js
+Vue.component(BaButton)
+
+// 当作插件使用，main.js
+Vue.use(BaButton)
+```
+
+## Demo
 
 <Canvas>
   <Story
@@ -74,9 +108,13 @@ export const Template = (args, storyCtx) => ({
   </Story>
 </Canvas>
 
+## ArgsTable
+
 <ArgsTable of={BaButton} />
 
-## 尺寸
+## Guide
+
+### 尺寸
 
 可以通过设置`size`控制按钮大小；可选值有`['small', 'medium', 'large']`；默认`medium`
 
@@ -92,7 +130,7 @@ export const Template = (args, storyCtx) => ({
   </Story>
 </Canvas>
 
-## 颜色
+### 颜色
 
 可通过设置`backgroundColor`控制背景颜色；支持`hex、rgb、rgba、关键字`
 
@@ -108,7 +146,7 @@ export const Template = (args, storyCtx) => ({
   </Story>
 </Canvas>
 
-## v-slot:icon
+### v-slot:icon
 
 可通过`icon插槽`自定义图标样式
 
@@ -143,7 +181,7 @@ export const Template = (args, storyCtx) => ({
   </Story>
 </Canvas>
 
-## v-slot:extra
+### v-slot:extra
 
 `extra插槽`可用来定义额外信息，对外暴露`{label}`
 

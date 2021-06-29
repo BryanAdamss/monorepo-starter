@@ -15,6 +15,8 @@ import SvgTable from './svg-table'
 
 # @{{scope}}/{{fileName}}
 
+> {{chineseName}}
+
 ## Install
 
 \`\`\`bash

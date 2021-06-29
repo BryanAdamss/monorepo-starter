@@ -38,7 +38,7 @@ const comp = (params) => ({
     name: `./src/${params.fileName}.vue`
   },
   readme: {
-    tpl: require('./readme'),
+    tpl: require('./comp-readme'),
     params,
     name: './README.md'
   },

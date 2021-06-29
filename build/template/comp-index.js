@@ -15,10 +15,8 @@ export function install(Vue) {
   Vue.component({{compName}}.name, {{compName}})
 }
 
-// Create module definition for Vue.use()
-const plugin = {
-  install
-}
+// Create module definition for Vue.use({{compName}})
+{{compName}}.install = install
 
 // Auto-install when vue is found (eg. in browser via <script> tag)
 let GlobalVue = null
@@ -28,7 +26,7 @@ if (typeof window !== 'undefined') {
   GlobalVue = global.Vue
 }
 
-if (GlobalVue) GlobalVue.use(plugin)
+if (GlobalVue) GlobalVue.use({{compName}})
 
 // To allow use as module (npm/webpack/etc.) export component
 export default {{compName}}`
