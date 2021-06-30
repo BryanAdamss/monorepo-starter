@@ -2,6 +2,22 @@
 
 A monorepo starter for UI components develop. Use lerna,yarn workspaces, rollup, storybook etc.
 
+
+## Feature
+- [x] support develop `vue@2 components`、`es library`、`assets` npm package
+- [x] auto generate document with `jsdoc` for `es library`
+
+## Stack
+- [x] `storybook-vue@6.x`
+- [x] `lerna`
+- [x] `rollup`
+- [x] `jsdoc`
+- [x] `yarn workspace`
+
+
+
+
+
 ## Install
 
 ```bash
