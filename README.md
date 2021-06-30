@@ -4,9 +4,10 @@ A monorepo starter for UI components develop. Use lerna,yarn workspaces, rollup,
 
 
 ## Feature
-- [x] monorepo(lerna + yarn workspace + rollup)
+- [x] monorepo(`lerna + yarn workspace + rollup`)
 - [x] support develop `vue@2 components`、`es library`、`assets` npm package
-- [x] auto generate document with `jsdoc` for `es library`
+- [x] auto generate `es library` document with `jsdoc`
+- [x] semantic release
 
 ## Stack
 - [x] `storybook-vue@6.x`
