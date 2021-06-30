@@ -16,15 +16,14 @@ A monorepo starter for UI components develop. Use lerna,yarn workspaces, rollup,
 - [x] `jsdoc`
 - [x] `yarn workspace`
 
-## Install
+## Usage
 
 ```bash
-npm i @ba/xxx
-
-or
-
-yarn add @ba/xxx
-
+1. git clone https://github.com/BryanAdamss/monorepo-starter.git
+2. cd monorepo-starter
+3. yarn bootstrap
+4. yarn dev
+5. yarn doc(for deploy)
 ```
 
 ## NPM
