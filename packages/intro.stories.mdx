@@ -13,6 +13,8 @@ import { linkTo } from '@storybook/addon-links'
 
 > monorepo-starter 是一个 monorepo 模板工程，提供基于 storybook-vue 的 UI 开发体验；
 
+> **注意 **，所有提供的包是面向`morden浏览器`的，没有交付`es5`代码。若需要兼容低版本浏览器，需要自行使用`webpack`、`rollup`或`babel`做降级处理。`webpack`示例见[链接](#webpack-degrade)
+
 主要对外提供下面几种`npm包`
 
 - `vue组件包`
@@ -24,6 +26,8 @@ import { linkTo } from '@storybook/addon-links'
 - `资源包`
   - `svg`、`缺省图`等等资源
   - `type为assets`
+
+> `vue组件包`支持交互式文档，可编辑`props`，实时查看效果；操作方法：在左侧列表选择一个`vue组件`，点击右侧左上角`canvas`tab，即可进入`vue组件`的交互模式；如果交互面板未出现，可按快捷键`a`或者`d`显示；
 
 ## 如何查询？
 
@@ -78,6 +82,32 @@ npm i
 | <code>@ba/hello</code>      | `lib`    | 问候       | `v1.1.1` | [jump](?path=/story/libs-bahello--page)             |
 | <code>@ba/svg-assets</code> | `assets` | svg 资源包 | `v1.1.0` | [jump](?path=/story/assets-basvgassets--page)       |
 | <code>@ba/utils</code>      | `lib`    | 工具方法   | `v1.1.1` | [jump](?path=/story/libs-bautils--page)             |
+
+## webpack-degrade
+
+- `webpack` 默认不处理`node_modules`中的包，如果需要兼容低版本浏览器，需要将`ZY-CBB`的包叫给`webpack`做降级处理
+
+```js
+// webpack.config.js
+module.exports = {
+  ...,
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [
+          resolve('src'),
+          resolve('test'),
+          resolve('node_modules/webpack-dev-server/client'),
+          // * 2021-0628-1028 处理zy-cbb组件
+          resolve('node_modules/@hw')
+        ]
+      }
+    ]
+  }
+}
+```
 
 ## 贡献者
 
