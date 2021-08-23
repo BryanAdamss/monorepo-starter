@@ -19,7 +19,7 @@ const assets = (params) => ({
     params,
     name: './package.json'
   },
-  mdx: {
+  stories: {
     tpl: require('./assets-mdx'),
     params,
     name: `./stories/${params.fileName}.stories.mdx`
@@ -84,6 +84,11 @@ const lib = (params) => ({
     tpl: require('./lib-pkg'),
     params,
     name: './package.json'
+  },
+  stories: {
+    tpl: require('./lib-mdx'),
+    params,
+    name: `./stories/${params.fileName}.stories.mdx`
   }
 })
 
