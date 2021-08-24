@@ -3,7 +3,8 @@
  * @description intro.stories.mdx 模板
  */
 
-module.exports = `<!-- args定义参考:https://storybook.js.org/docs/vue/writing-stories/args -->
+module.exports = `<!-- 当前文档是通过 build/template/intro-mdx.js生成的，请勿手动修改 -->
+<!-- args定义参考:https://storybook.js.org/docs/vue/writing-stories/args -->
 <!-- argTypes定义参考:https://storybook.js.org/docs/react/essentials/controls#annotation -->
 
 import { Meta } from '@storybook/addon-docs/blocks'

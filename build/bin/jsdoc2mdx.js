@@ -12,7 +12,7 @@ const render = require('json-templater/string')
 const { scope } = require('../../project.config')
 const { log, prettierMdx } = require('../shared/tool')
 
-const libMdxTpl = require('../template/lib-mdx')
+const libMdxTpl = require('../template/lib/mdx')
 
 const { LERNA_PACKAGE_NAME } = process.env
 
