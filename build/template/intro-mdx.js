@@ -29,6 +29,14 @@ import { linkTo } from '@storybook/addon-links'
 - \`资源包\`
   - \`svg\`、\`缺省图\`等等资源
   - \`type为assets\`
+- \`cli包\`
+  - 提供一些\`node cli\`
+  - 内部\`type\`为\`cli\`
+- \`conf包\`
+  - 提供一些\`lint\`或\`format\`的配置文件
+  - 内部\`type\`为\`conf\`
+
+> \`vue组件包\`支持交互式文档，可编辑\`props\`，实时查看效果；操作方法：在左侧列表选择一个\`vue组件\`，点击右侧左上角\`canvas\`tab，即可进入\`vue组件\`的交互模式；如果交互面板未出现，可按快捷键\`a\`或者\`d\`显示；
 
 ## 如何查询？
 
@@ -38,7 +46,7 @@ import { linkTo } from '@storybook/addon-links'
 
 ## 如何安装？
 
-\`monorepo starter\` 的包全部以\`@ba\`做为\`scope\`，发布到了\`npm 源\`上。
+\`monorepo starter\` 的包全部以\`@{{scope}}\`做为\`scope\`，发布到了\`npm 源\`上。
 可以通过设置\`npm 源\`的方式安装。
 
 ### 方法一：全局切到npm源安装
@@ -47,7 +55,7 @@ import { linkTo } from '@storybook/addon-links'
 
 \`\`\`bash
 npm config set registry https://registry.npmjs.org/
-npm i @ba/xxx
+npm i @{{scope}}/xxx
 \`\`\`
 
 ### 方法二：单独指定到npm源进行安装
@@ -55,7 +63,7 @@ npm i @ba/xxx
 > 适用于同时需要使用npm源、三方源安装包的项目
 
 \`\`\`bash
-npm i @ba/xxx --registry=https://registry.npmjs.org/
+npm i @{{scope}}/xxx --registry=https://registry.npmjs.org/
 \`\`\`
 
 ### 方法三：指定具体地址安装（推荐）
@@ -67,7 +75,7 @@ npm i @ba/xxx --registry=https://registry.npmjs.org/
 // 第一步，在packages.json中指定包和具体版本
 {
   "dependencies": {
-    "@ba/package-name": "https://registry.npmjs.org/@ba/package-name/download/@ba/package-name-0.11.3.tgz"
+    "@{{scope}}/package-name": "https://registry.npmjs.org/@{{scope}}/package-name/download/@{{scope}}/package-name-0.11.3.tgz"
   }
 }
 
@@ -86,4 +94,29 @@ npm i
 | 账号     | 主页                                                                 |
 | ---------- | -------------------------------------------------------------------- |
 | \`BryanAdamss\`    | [https://github.com/BryanAdamss](https://github.com/BryanAdamss)       |
-`
+
+## webpack-degrade
+
+- \`webpack\` 默认不处理\`node_modules\`中的包，如果需要兼容低版本浏览器，需要将\`ZY-CBB\`的包叫给\`webpack\`做降级处理
+
+\`\`\`js
+// webpack.config.js
+module.exports = {
+  ...,
+  module: {
+    rules: [
+      {
+        test: /\\.js$/,
+        loader: 'babel-loader',
+        include: [
+          resolve('src'),
+          resolve('test'),
+          resolve('node_modules/webpack-dev-server/client'),
+          // * 2021-0628-1028 处理zy-cbb组件
+          resolve('node_modules/@hw')
+        ]
+      }
+    ]
+  }
+}
+\`\`\``

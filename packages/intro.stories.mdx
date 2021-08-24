@@ -13,8 +13,6 @@ import { linkTo } from '@storybook/addon-links'
 
 > monorepo-starter 是一个 monorepo 模板工程，提供基于 storybook-vue 的 UI 开发体验；
 
-> **注意 **，所有提供的包是面向`morden浏览器`的，没有交付`es5`代码。若需要兼容低版本浏览器，需要自行使用`webpack`、`rollup`或`babel`做降级处理。`webpack`示例见[链接](#webpack-degrade)
-
 主要对外提供下面几种`npm包`
 
 - `vue组件包`
@@ -26,6 +24,12 @@ import { linkTo } from '@storybook/addon-links'
 - `资源包`
   - `svg`、`缺省图`等等资源
   - `type为assets`
+- `cli包`
+  - 提供一些`node cli`
+  - 内部`type`为`cli`
+- `conf包`
+  - 提供一些`lint`或`format`的配置文件
+  - 内部`type`为`conf`
 
 > `vue组件包`支持交互式文档，可编辑`props`，实时查看效果；操作方法：在左侧列表选择一个`vue组件`，点击右侧左上角`canvas`tab，即可进入`vue组件`的交互模式；如果交互面板未出现，可按快捷键`a`或者`d`显示；
 
@@ -37,7 +41,7 @@ import { linkTo } from '@storybook/addon-links'
 
 ## 如何安装？
 
-`monorepo starter` 的包全部以`@ba`做为`scope`，发布到了`npm 源`上。
+`monorepo starter` 的包全部以`@{{scope}}`做为`scope`，发布到了`npm 源`上。
 可以通过设置`npm 源`的方式安装。
 
 ### 方法一：全局切到 npm 源安装
@@ -46,7 +50,7 @@ import { linkTo } from '@storybook/addon-links'
 
 ```bash
 npm config set registry https://registry.npmjs.org/
-npm i @ba/xxx
+npm i @{{scope}}/xxx
 ```
 
 ### 方法二：单独指定到 npm 源进行安装
@@ -54,7 +58,7 @@ npm i @ba/xxx
 > 适用于同时需要使用 npm 源、三方源安装包的项目
 
 ```bash
-npm i @ba/xxx --registry=https://registry.npmjs.org/
+npm i @{{scope}}/xxx --registry=https://registry.npmjs.org/
 ```
 
 ### 方法三：指定具体地址安装（推荐）
@@ -66,7 +70,7 @@ npm i @ba/xxx --registry=https://registry.npmjs.org/
 // 第一步，在packages.json中指定包和具体版本
 {
   "dependencies": {
-    "@ba/package-name": "https://registry.npmjs.org/@ba/package-name/download/@ba/package-name-0.11.3.tgz"
+    "@{{scope}}/package-name": "https://registry.npmjs.org/@{{scope}}/package-name/download/@{{scope}}/package-name-0.11.3.tgz"
   }
 }
 
@@ -82,6 +86,16 @@ npm i
 | <code>@ba/hello</code>      | `lib`    | 问候       | `v1.1.1` | [jump](?path=/story/libs-bahello--page)             |
 | <code>@ba/svg-assets</code> | `assets` | svg 资源包 | `v1.1.0` | [jump](?path=/story/assets-basvgassets--page)       |
 | <code>@ba/utils</code>      | `lib`    | 工具方法   | `v1.1.1` | [jump](?path=/story/libs-bautils--page)             |
+| <code>@ba/cli-demo</code>   | `cli`    | cli 例子   | `v1.0.0` | [jump](?path=/story/cli-baclidemo--page)            |
+| <code>@ba/conf-demo</code>  | `conf`   | conf 例子  | `v1.0.0` | [jump](?path=/story/conf-baconfdemo--page)          |
+
+## 贡献者
+
+### 名单
+
+| 账号          | 主页                                                             |
+| ------------- | ---------------------------------------------------------------- |
+| `BryanAdamss` | [https://github.com/BryanAdamss](https://github.com/BryanAdamss) |
 
 ## webpack-degrade
 
@@ -108,11 +122,3 @@ module.exports = {
   }
 }
 ```
-
-## 贡献者
-
-### 名单
-
-| 账号          | 主页                                                             |
-| ------------- | ---------------------------------------------------------------- |
-| `BryanAdamss` | [https://github.com/BryanAdamss](https://github.com/BryanAdamss) |

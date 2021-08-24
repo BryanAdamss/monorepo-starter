@@ -22,5 +22,17 @@
     "path": "./packages/utils",
     "version": "1.1.1",
     "cnName": "工具方法"
+  },
+  "cli-demo": {
+    "type": "cli",
+    "path": "./packages/cli-demo",
+    "version": "1.0.0",
+    "cnName": "cli例子"
+  },
+  "conf-demo": {
+    "type": "conf",
+    "path": "./packages/conf-demo",
+    "version": "1.0.0",
+    "cnName": "conf例子"
   }
 }

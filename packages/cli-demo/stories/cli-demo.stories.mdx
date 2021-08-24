@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Cli/BaCliDemo"
+  parameters={{ previewTabs: { canvas: { hidden: true } },docsOnly:true }}
+/>
+
+# @ba/cli-demo
+
+> cli例子
+
+## 安装
+
+```bash
+npm i @ba/cli-demo 
+
+or
+
+yarn add @ba/cli-demo 
+```
+
+## 使用
+
+### 通过cli使用
+
+```json
+{
+  "scripts": {
+    "cli-demo": "cli-demo --propA src/**/*.vue src/**/*.js --propB  "
+  }
+}
+```
+
+### 通过function使用
+```js
+const BaCliDemo = require('@ba/cli-demo')
+
+BaCliDemo({
+  propA: ['src/**/*.vue'],
+  propB:true
+})
+```
+
+### 可用参数及默认值
+
+```
+{
+  propA = ['src/**/*.vue', 'src/**/*.js'],
+  propB = false
+}
+```

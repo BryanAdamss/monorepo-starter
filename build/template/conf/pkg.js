@@ -1,37 +1,27 @@
 /**
  * @author GuangHui
- * @description comp package.json模板
+ * @description conf package.json模板
  */
 
 module.exports = `{
   "name": "@{{scope}}/{{fileName}}",
-  "_pkgType": "comp",
+  "_pkgType": "conf",
   "version": "1.0.0",
-  "description": "A vue {{fileName}} component",
+  "description": "A {{fileName}}",
   "author": {
     "name": "GuangHui",
     "email": "bryanadamss@foxmail.com",
     "url": "https://github.com/BryanAdamss"
   },
-  "homepage": "https://github.com/BryanAdamss/monorepo-starter#readme",,
+  "homepage": "https://github.com/BryanAdamss/monorepo-starter#readme",
   "license": "MIT",
-  "main": "./dist/index.cjs.js",
-  "exports": {
-    "import":"./dist/index.modern.mjs",
-    "require":"./dist/index.cjs.js"
-  },
-  "module": "./dist/index.es.js",
-  "browser": "./dist/index.umd.js",
-  "unpkg": "./dist/index.umd.js",
-  "scripts": {
-    "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c=../../build/comp.js"
-  },
+  "main": "./src/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "publishConfig": {
     "access": "public",

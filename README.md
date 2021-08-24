@@ -2,28 +2,15 @@
 
 A monorepo starter for UI components develop. Use lerna,yarn workspaces, rollup, storybook etc.
 
-
-## Feature
-- [x] monorepo(`lerna + yarn workspace + rollup`)
-- [x] support develop `vue@2 components`、`es library`、`assets` npm package
-- [x] auto generate `es library` document with `jsdoc`
-- [x] semantic release
-
-## Stack
-- [x] `storybook-vue@6.x`
-- [x] `lerna`
-- [x] `rollup`
-- [x] `jsdoc`
-- [x] `yarn workspace`
-
-## Usage
+## Install
 
 ```bash
-1. git clone https://github.com/BryanAdamss/monorepo-starter.git
-2. cd monorepo-starter
-3. yarn bootstrap
-4. yarn dev
-5. yarn doc(for deploy)
+npm i @{{scope}}/xxx
+
+or
+
+yarn add @{{scope}}/xxx
+
 ```
 
 ## NPM

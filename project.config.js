@@ -16,7 +16,9 @@ const PUBLISH_DIR = '.' // 静态站点目录
 const MDX_CATEGORY_MAP = {
   comp: 'Components',
   lib: 'Libs',
-  assets: 'Assets'
+  assets: 'Assets',
+  cli: 'Cli',
+  conf: 'Conf'
 }
 
 const rootDir = join(__dirname, '.') // 项目根目录
