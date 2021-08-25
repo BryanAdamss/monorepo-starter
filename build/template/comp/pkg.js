@@ -21,7 +21,6 @@ module.exports = `{
     "require":"./dist/index.cjs.js"
   },
   "module": "./dist/index.es.js",
-  "browser": "./dist/index.umd.js",
   "unpkg": "./dist/index.umd.js",
   "scripts": {
     "build": "lerna exec --scope @{{scope}}/{{fileName}} -- rollup -c=../../build/comp.js"
