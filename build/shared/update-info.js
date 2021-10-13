@@ -54,7 +54,7 @@ function updateIntroMdx() {
   fileSave(introMdxDir)
     .write(
       prettierMdx(
-        render(introMdxTpl, { title, compTableWithLink: genMdCompTableWithLink() })
+        render(introMdxTpl, { title, scope, compTableWithLink: genMdCompTableWithLink() })
       )
     )
 }
@@ -63,7 +63,7 @@ function updateRootMd() {
   fileSave(rootReadmeDir)
     .write(
       prettierMd(
-        render(rootMdTpl, { title, compTable: genMdCompTable() })
+        render(rootMdTpl, { title, scope, compTable: genMdCompTable() })
       )
     )
 }
