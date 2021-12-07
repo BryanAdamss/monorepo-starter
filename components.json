@@ -34,5 +34,11 @@
     "path": "./packages/conf-demo",
     "version": "1.0.0",
     "cnName": "conf例子"
+  },
+  "gen-request": {
+    "type": "cli",
+    "path": "./packages/gen-request",
+    "version": "1.0.0",
+    "cnName": "请求生成"
   }
 }

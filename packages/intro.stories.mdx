@@ -1,3 +1,4 @@
+<!-- 当前文档是通过 build/template/intro-mdx.js生成的，请勿手动修改 -->
 <!-- args定义参考:https://storybook.js.org/docs/vue/writing-stories/args -->
 <!-- argTypes定义参考:https://storybook.js.org/docs/react/essentials/controls#annotation -->
 
@@ -41,7 +42,7 @@ import { linkTo } from '@storybook/addon-links'
 
 ## 如何安装？
 
-`monorepo starter` 的包全部以`@{{scope}}`做为`scope`，发布到了`npm 源`上。
+`monorepo starter` 的包全部以`@ba`做为`scope`，发布到了`npm 源`上。
 可以通过设置`npm 源`的方式安装。
 
 ### 方法一：全局切到 npm 源安装
@@ -50,7 +51,7 @@ import { linkTo } from '@storybook/addon-links'
 
 ```bash
 npm config set registry https://registry.npmjs.org/
-npm i @{{scope}}/xxx
+npm i @ba/xxx
 ```
 
 ### 方法二：单独指定到 npm 源进行安装
@@ -58,7 +59,7 @@ npm i @{{scope}}/xxx
 > 适用于同时需要使用 npm 源、三方源安装包的项目
 
 ```bash
-npm i @{{scope}}/xxx --registry=https://registry.npmjs.org/
+npm i @ba/xxx --registry=https://registry.npmjs.org/
 ```
 
 ### 方法三：指定具体地址安装（推荐）
@@ -70,7 +71,7 @@ npm i @{{scope}}/xxx --registry=https://registry.npmjs.org/
 // 第一步，在packages.json中指定包和具体版本
 {
   "dependencies": {
-    "@{{scope}}/package-name": "https://registry.npmjs.org/@{{scope}}/package-name/download/@{{scope}}/package-name-0.11.3.tgz"
+    "@ba/package-name": "https://registry.npmjs.org/@ba/package-name/download/@ba/package-name-0.11.3.tgz"
   }
 }
 
@@ -80,14 +81,15 @@ npm i
 
 ## npm package list
 
-| 包                          | 类型     | 描述       | 版本     | 文档                                                |
-| --------------------------- | -------- | ---------- | -------- | --------------------------------------------------- |
-| <code>@ba/button</code>     | `comp`   | 按钮       | `v1.1.1` | <a onClick={linkTo('Components/BaButton')}>jump</a> |
-| <code>@ba/hello</code>      | `lib`    | 问候       | `v1.1.1` | [jump](?path=/story/libs-bahello--page)             |
-| <code>@ba/svg-assets</code> | `assets` | svg 资源包 | `v1.1.0` | [jump](?path=/story/assets-basvgassets--page)       |
-| <code>@ba/utils</code>      | `lib`    | 工具方法   | `v1.1.1` | [jump](?path=/story/libs-bautils--page)             |
-| <code>@ba/cli-demo</code>   | `cli`    | cli 例子   | `v1.0.0` | [jump](?path=/story/cli-baclidemo--page)            |
-| <code>@ba/conf-demo</code>  | `conf`   | conf 例子  | `v1.0.0` | [jump](?path=/story/conf-baconfdemo--page)          |
+| 包                           | 类型     | 描述       | 版本     | 文档                                                |
+| ---------------------------- | -------- | ---------- | -------- | --------------------------------------------------- |
+| <code>@ba/button</code>      | `comp`   | 按钮       | `v1.1.1` | <a onClick={linkTo('Components/BaButton')}>jump</a> |
+| <code>@ba/hello</code>       | `lib`    | 问候       | `v1.1.1` | [jump](?path=/story/libs-bahello--page)             |
+| <code>@ba/svg-assets</code>  | `assets` | svg 资源包 | `v1.1.0` | [jump](?path=/story/assets-basvgassets--page)       |
+| <code>@ba/utils</code>       | `lib`    | 工具方法   | `v1.1.1` | [jump](?path=/story/libs-bautils--page)             |
+| <code>@ba/cli-demo</code>    | `cli`    | cli 例子   | `v1.0.0` | [jump](?path=/story/cli-baclidemo--page)            |
+| <code>@ba/conf-demo</code>   | `conf`   | conf 例子  | `v1.0.0` | [jump](?path=/story/conf-baconfdemo--page)          |
+| <code>@ba/gen-request</code> | `cli`    | 请求生成   | `v1.0.0` | [jump](?path=/story/cli-bagenrequest--page)         |
 
 ## 贡献者
 

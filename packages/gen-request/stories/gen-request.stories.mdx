@@ -1,0 +1,74 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta
+  title="Cli/BaGenRequest"
+  parameters={{ previewTabs: { canvas: { hidden: true } }, docsOnly: true }}
+/>
+
+# @ba/gen-request
+
+> 根据 api 配置，自动生成请求方法；建议配合@ba/api-builder 使用
+
+## 安装
+
+```bash
+npm i @ba/gen-request
+
+or
+
+yarn add @ba/gen-request
+```
+
+## 使用
+
+### 通过 cli 生成
+
+默认是`watch`默认，当`patterns`文件变动时，会自动生成新的文件。
+
+```json
+{
+  "scripts": {
+    "gen-request": "gen-request --patterns src/services/api/*.js src/other/dir/*.js --output src/services/request --debug --requestFnName axiosFn --requestImportStatement import { apiBuilderInstance } from 'Services/extends/api-builder-instance.js'"
+  }
+}
+```
+
+### 使用 function
+
+适合在需要生成多个请求实例方法的场景
+
+```js
+const {
+  BaGenRequest,
+  batchGenerate, // 默认实例的批量生成方法
+  generate, // 默认实例单个生成方法
+  watch // 默认实例的watch方法
+} = require('@ba/gen-request')
+
+// 使用BaGenRequest生成新实例
+const newGenRequest = BaGenRequest()
+
+// 开启watch
+newGenRequest.watch({
+  patterns: ['src/services/api/*.js'], // 默认搜索src/services/api/*.js
+  globbyOptions: {}, // 自定义globby的选项，会覆盖默认的选项
+  requestFnName: 'apiBuilderInstance.create', // 请求方法名
+  requestImportStatement:
+    "import { apiBuilderInstance } from 'Services/extends/api-builder-instance.js'", // 请求方法导入语句,
+  outputDir: './src/services/request',
+  debug: false // 调试模式开关，为true输出相关log且不会写文件
+})
+```
+
+### 可用参数及默认值
+
+```
+{
+  patterns = ['src/services/api/*.js'], // 默认搜索src/services/api/*.js
+  globbyOptions = {}, // 自定义globby的选项，会覆盖默认的选项
+  requestFnName = 'apiBuilderInstance.create', // 请求方法名
+  requestImportStatement = 'import { apiBuilderInstance } from \'Services/extends/api-builder-instance.js\'', // 请求方法导入语句,
+  outputDir = './src/services/request',
+  debug = false // 调试模式开关，为true输出相关log且不会写文件
+}
+```

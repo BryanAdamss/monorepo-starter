@@ -5,11 +5,11 @@ A monorepo starter for UI components develop. Use lerna,yarn workspaces, rollup,
 ## Install
 
 ```bash
-npm i @{{scope}}/xxx
+npm i @ba/xxx
 
 or
 
-yarn add @{{scope}}/xxx
+yarn add @ba/xxx
 
 ```
 

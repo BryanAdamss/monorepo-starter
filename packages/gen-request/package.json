@@ -1,13 +1,8 @@
-/**
- * @author GuangHui
- * @description cli package.json模板
- */
-
-module.exports = `{
-  "name": "@{{scope}}/{{fileName}}",
+{
+  "name": "@ba/gen-request",
   "_pkgType": "cli",
   "version": "1.0.0",
-  "description": "A {{fileName}}",
+  "description": "A gen-request",
   "author": {
     "name": "GuangHui",
     "email": "bryanadamss@foxmail.com",
@@ -21,7 +16,7 @@ module.exports = `{
     "test": "__tests__"
   },
   "bin": {
-    "{{fileName}}": "bin/www"
+    "gen-request": "bin/www"
   },
   "files": [
     "bin",
@@ -39,6 +34,11 @@ module.exports = `{
     "url": "https://github.com/BryanAdamss/monorepo-starter/issues"
   },
   "dependencies": {
-    "yargs": "^17.0.1"
+    "file-save": "^0.2.0",
+    "globby": "^11.0.4",
+    "json-templater": "^1.2.0",
+    "rimraf": "^3.0.2",
+    "yargs": "^17.0.1",
+    "chalk": "^5.0.0"
   }
-}`
+}
