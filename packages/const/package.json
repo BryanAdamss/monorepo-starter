@@ -20,7 +20,7 @@
   "unpkg": "./dist/index.umd.js",
   "scripts": {
     "build": "lerna exec --scope @ba/const -- rollup -c ../../build/ts.js",
-    "postbuild": "lerna exec --scope @ba/const -- tsc --emitDeclarationOnly --declaration --declarationDir ./types",
+    "postbuild": "lerna exec --scope @ba/const -- tsc -p ./tsconfig.json",
     "jsdoc2mdx": "lerna exec --scope @ba/const -- node ../../build/bin/jsdoc2mdx.js"
   },
   "directories": {
