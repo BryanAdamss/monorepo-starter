@@ -40,5 +40,11 @@
     "path": "./packages/gen-request",
     "version": "1.0.0",
     "cnName": "请求生成"
+  },
+  "const": {
+    "type": "lib",
+    "path": "./packages/const",
+    "version": "1.0.0",
+    "cnName": "常量"
   }
 }

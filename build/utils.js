@@ -101,18 +101,21 @@ export const genGlobals = (array) =>
   * 获取babel options
   * @returns babel options
   */
-export const getBabelOptions = isModern => ({
+export const getBabelOptions = (isModern, isTs = false) => ({
+  extensions: isTs ? ['.ts', '.tsx'] : ['.js', '.jsx'],
   exclude: ['node_modules/**'],
-  presets: [[
-    '@babel/preset-env', isModern
-      ? {
-          modules: false,
-          targets: { esmodules: true },
-          bugfixes: true,
-          loose: true
-        }
-      : { modules: false }
-  ]]
+  presets: [
+    [
+      '@babel/preset-env', isModern
+        ? {
+            modules: false,
+            targets: { esmodules: true },
+            bugfixes: true,
+            loose: true
+          }
+        : { modules: false }
+    ], '@babel/preset-typescript'],
+  plugins: ['@babel/plugin-proposal-class-properties']
 })
 
 /**
@@ -163,8 +166,50 @@ export const genLibConf = ({ format, file, isModern, external, globals, INPUT_FI
     img({
       output: 'dist', // default the root
       extensions: /\.(png|jpg|jpeg)$/, // support png|jpg|jpeg|gif|svg, and it's alse the default value
-      limit: 8192, // default 8192(8k)，低于8K的内联
-      _slash: true // 启用相对路径
+      limit: 8192, // default 8192(8k)
+      _slash: true
+      // exclude: 'node_modules/**'
+    }),
+    terser(getTerserOptions())
+  ]
+})
+
+/**
+  * 生成基础rollup配置对象
+  * @param {Object} obj 参数对象
+  * @returns 一个rollup配置对象
+  */
+export const genTsConf = ({ format, file, isModern, external, globals, INPUT_FILE, PACKAGE_ROOT_PATH, LERNA_PACKAGE_NAME }) => ({
+  input: INPUT_FILE,
+
+  output: {
+    file: path.join(PACKAGE_ROOT_PATH, file),
+    format,
+    sourcemap: false,
+    name: transform2PascalCase(LERNA_PACKAGE_NAME),
+    globals,
+    amd: {
+      id: LERNA_PACKAGE_NAME
+    },
+    exports: 'named'
+  },
+
+  external,
+
+  plugins: [
+    nodeResolve(
+      {
+        extensions: ['.ts']
+      }
+    ),
+    commonjs(),
+    babel(getBabelOptions(isModern, true)),
+    banner(getBanner()),
+    img({
+      output: 'dist', // default the root
+      extensions: /\.(png|jpg|jpeg)$/, // support png|jpg|jpeg|gif|svg, and it's alse the default value
+      limit: 8192, // default 8192(8k)
+      _slash: true
       // exclude: 'node_modules/**'
     }),
     terser(getTerserOptions())
@@ -201,7 +246,7 @@ export const genVueConf = ({ format, file, isModern, external, globals, INPUT_FI
       output: 'dist', // default the root
       extensions: /\.(png|jpg|jpeg)$/, // support png|jpg|jpeg|gif|svg, and it's alse the default value
       limit: 8192, // default 8192(8k)
-      _slash: true // 使用相对路径
+      _slash: true
       // exclude: 'node_modules/**'
     }),
     vue({

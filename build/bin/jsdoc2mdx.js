@@ -17,16 +17,21 @@ const libMdxTpl = require('../template/lib/mdx')
 const { LERNA_PACKAGE_NAME } = process.env
 
 const PACKAGE_ROOT_PATH = process.cwd()
-const input = path.join(PACKAGE_ROOT_PATH, 'src/*.js')
+const input = path.join(PACKAGE_ROOT_PATH, 'src/**/*.{js,ts}')
+
 const outputDir = path.join(PACKAGE_ROOT_PATH, 'stories')
 const fileName = LERNA_PACKAGE_NAME.split('/')[1]
-const outputFile = path.resolve(outputDir, `${fileName}.stories.mdx`)
+const outputFile = path.join(outputDir, `${fileName}.stories.mdx`)
+const jsdocConfigFile = path.join(__dirname, '../../jsdoc.config.js')
 
 function getJsdoc2mdContent() {
   // 清除缓存
   jsdoc2md.clear()
 
-  const templateData = jsdoc2md.getTemplateDataSync({ files: input })
+  const templateData = jsdoc2md.getTemplateDataSync({
+    files: input,
+    configure: jsdocConfigFile
+  })
 
   return jsdoc2md.renderSync({ data: templateData })
 }
