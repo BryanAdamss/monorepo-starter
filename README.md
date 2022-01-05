@@ -1,8 +1,9 @@
 # monorepo-starter
 
-A monorepo starter for UI components develop. 
-Use `storybook`,`lerna`,`yarn workspaces`, `rollup` etc.
-Support `js lib`,`node lib`,`vue component`、`assets` development and document!
+> A monorepo starter for UI components develop. 
+- Use `storybook`,`lerna`,`yarn workspaces`, `rollup` etc.
+- Support `js lib`,`node lib`,`vue component`、`assets` development and document!
+- Comment friendly!
 
 ## Install
 
